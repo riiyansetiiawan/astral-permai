@@ -18,8 +18,8 @@ HRASTRAL RILIS pada bulan 01 juni 2021.
 TATA CARA INSTALL HRASTRAL
 *******************
 
-pertama :
-clone dan download aplikasi di github https://github.com/riiyansetiiawan/astral-permai.git
+Pertama :
+clone dan download aplikasi di github <https://github.com/riiyansetiiawan/astral-permai.git>
 
 **************************
 Changelog and New Features
