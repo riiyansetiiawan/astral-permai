@@ -1,22 +1,25 @@
 ###################
-What is CodeIgniter
+APA ITU HRASTRAL
 ###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tugass, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given tugas.
+HRASTRAL adalah aplikasi human resource management yang bisa membatu Tim Manajemen perusahaan
+untuk memonitoring karyawan dalam segi Akuntansi, Asset Perusahaan, Biaya Pendapatan dan Pengeluaran,
+Cuti, Departemen, Event, File dokumen, Invoice, Keluhan klien dan karyawan, Laporan, Lokasi, Meeting,
+Kehadiran, Tugas, Penggajian, Proyek, Penghargaan, Penghentian, Pengunduran diri, Pengumuman, Peringatan,
+Perjalanan, Lembur, Promosi, Tiket keluhan dan Training
 
 *******************
-Release Information
+Informasi Rilis HRASTRAL
 *******************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+HRASTRAL RILIS pada bulan 01 juni 2021.
+
+*******************
+TATA CARA INSTALL HRASTRAL
+*******************
+
+pertama :
+clone dan download aplikasi di github 
 
 **************************
 Changelog and New Features
