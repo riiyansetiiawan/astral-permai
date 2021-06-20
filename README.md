@@ -15,10 +15,10 @@ Perjalanan, Lembur, Promosi, Tiket keluhan dan Training
 </p>
 HRASTRAL RILIS pada bulan 01 juni 2021.
 Merupakan implementasi yang saya lakukan terhadap perusahaan outsourcing yang bergarak di bidang jasa, 
-yang di buat untuk manage dengan 3 user yaitu :
-1. Admin
-2. Karayawan
-3. Klien
+yang di buat untuk manage dengan 3 user yaitu : <br/>
+1. Admin <br/>
+2. Karayawan <br/>
+3. Klien <br/>
 
 *******************
 TATA CARA INSTALL HRASTRAL
@@ -26,7 +26,8 @@ TATA CARA INSTALL HRASTRAL
 ![hrastralwhite11](https://user-images.githubusercontent.com/42500531/122683760-8a42ea80-d22b-11eb-8294-a68aae196704.png)
 
 Pertama :
-clone dan download aplikasi di github
+clone dan download aplikasi di github <br/>
+[Link](https://github.com/riiyansetiawan/install/index.php)
 
 **************************
 Changelog and New Features
