@@ -1,0 +1,291 @@
+.customizer-content .custom-control {
+	padding-left: 0.2rem !important;
+}
+@media (min-width: 1200px) bootstrap.css:6405 .d-xl-block {
+ display: block !important;
+}
+.customizer .customizer-content {
+	position: relative;
+	height: 100%;
+}
+.btn-sm, .btn-group-sm > .btn {
+	border-radius: 0 !important;
+}
+.table td, .table th {
+ padding: .75rem !important;
+	vertical-align: middle !important;
+}
+.custom-table .table th {
+	vertical-align: middle !important;
+}
+table .btn-secondary {
+	color: #333 !important;
+	border-color: #ccc !important;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+ background-color: rgba(0, 0, 0, .05) !important;
+}
+.modal-body .table th, .table td {
+	border-top: 0;
+}
+.card-header {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+	padding: 5px;
+}
+form .form-actions {
+	text-align: right;
+}
+.btn-secondary:active:hover, .btn-secondary:active:focus, .btn-secondary:active.focus, .btn-secondary.active:hover, .btn-secondary.active:focus, .btn-secondary.active.focus, .open > .btn-secondary.dropdown-toggle:hover, .open > .btn-secondary.dropdown-toggle:focus, .open > .btn-secondary.dropdown-toggle.focus {
+	border-color: #BABFC7 !important;
+}
+.btn-secondary {
+	border-color: #BABFC7 !important;
+}
+.alert {
+	border-radius: 0;
+}
+.trumbowyg-button-pane {
+	padding: 0 0px !important;
+}
+.list-group .active {
+	color: #555 !important;
+	text-decoration: none !important;
+	background-color: #F5F7FA !important;
+	border-color: #E4E7ED !important;
+	border-left: 3px solid #E4E7ED;
+}
+form .form-section {
+	border-bottom: 1px solid #ccd6e6 !important;
+}
+.col-right {
+	float: right !important;
+}
+.select-custom {
+	height: 20px !important;
+}
+.pagination-cards .current {
+	z-index: 2;
+	color: #fff !important;
+	cursor: default;
+	background-color: #00B5B8;
+	border-color: #00B5B8;
+	padding: 0.5rem 1rem;
+	font-size: 1.25rem;
+}
+.pagination-cards a {
+	line-height: 1.8;
+	padding: 0.5rem 1rem;
+	font-size: 1.25rem;
+	position: relative;
+	float: left;
+	margin-left: -1px;
+	color: #00A5A8;
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid #E4E7ED;
+}
+.btn-file input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	opacity: 0;
+	background: white;
+	cursor: inherit;
+	display: block;
+}
+.btn-file {
+	margin-right:5px !important;
+}
+.btn-act-lang {
+	padding: 0 !important;
+}
+.iswitchery {
+	height:24px;
+	position: relative;
+	width:24px;
+}
+/*.modal-header {
+	background: #404E67 !important;
+    color: #fff !important;
+}
+.modal-header .close {
+    color: #fff !important;
+}
+.modal-body {
+	overflow: auto !important;
+    height: 480px !important;
+}*/
+.card .card-title {
+	text-transform: inherit !important;
+}
+.content-wrapper .content-header-title {
+	text-transform: inherit !important;
+}
+.breadcrumb {
+	text-transform: inherit !important;
+}
+.itheme-btn {
+	padding: 0 !important;
+}
+.user-image-hr {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	margin-right: 10px;
+	margin-top: -2px;
+}
+.user-image-hr-prj {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+.user-image-hr100 {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	margin-right: 10px;
+	margin-top: -2px;
+}
+.list-group-item-profile {
+	padding: 10px 5px !important;
+	border: 1px solid #ddd !important;
+	border-right: 0px solid #ddd !important;
+	border-left: 0px solid #ddd !important;
+}
+.info-box-content-hrastral {
+	padding: 20px 10px !important;
+}
+.info-box-icon-hrastral {
+	background:#FFF !important;
+}
+.info-box {
+	box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.03), 0 1px 4px 0 rgba(0, 0, 0, 0.04), 0 3px 1px -2px rgba(0, 0, 0, 0.04) !important;
+}
+.box {
+	box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.03), 0 1px 4px 0 rgba(0, 0, 0, 0.04), 0 3px 1px -2px rgba(0, 0, 0, 0.04) !important;
+}
+.box-footer {
+	padding:24px !important;
+}
+.dasboard-icon {
+	font-size:3rem;
+}
+.hrastral-font-dash {
+	font-size:2rem;
+}
+.text-black {
+	border-right: 1px solid #f4f4f4;
+}
+.welcome-hrastral-user {
+	font-weight:700 !important;
+}
+.welcome-hrastral-user-text {
+	font-weight: 400 !important;
+	color: #a3a4a6 !important;
+}
+ html:not([dir=rtl]) .pb-4, html:not([dir=rtl]) .py-4 {
+ padding-bottom: 1.5rem !important;
+}
+.align-items-center {
+	-webkit-box-align: center !important;
+	-ms-flex-align: center !important;
+	align-items: center !important;
+}
+.no-gutters {
+	margin-right: 0;
+	margin-left: 0;
+}
+.hrastral-dash-prj {
+	border-bottom: 1px solid #f4f4f4;
+	padding-top: 10px;
+}
+.hrastral-proj-style {
+	height: 290px !important;
+	overflow: auto !important;
+}
+.text-dark-hr {
+	color: #4E5155 !important;
+	font-weight: 600 !important;
+}
+.text-dark-hr[href]:hover {
+	color: #3c8ae2 !important;
+}
+.karyawan-list-tugass:first-child {
+	border-top-left-radius: 0px !important;
+	border-top-right-radius: 0px !important;
+}
+.table-dashboard td {
+	border-bottom:1px solid #f4f4f4;
+	border-top: 0px solid #f4f4f4 !important;
+}
+.box {
+	border-top: 0px solid #d2d6de !important;
+}
+.text-xs-center {
+	text-align: center !important;
+}
+.blue-grey.darken-1 {
+	color: #546E7A !important;
+}
+.card-header {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+.position-relative {
+	position: relative !important;
+}
+.mt-3 {
+	margin-top: 3rem !important;
+}
+.border-right-blue-grey.border-right-lighten-2 {
+	border-right: 1px solid #90A4AE !important;
+}
+ul.list-inline li {
+	display: inline-block;
+}
+.blue-grey.darken-1 {
+	color: #546E7A !important;
+}
+.success {
+	color: #16D39A !important;
+}
+ul.list-inline li {
+	display: inline-block;
+}
+.pl-2 {
+	padding-left: 0.5rem !important;
+}
+.blue-grey.darken-1 {
+	color: #546E7A !important;
+}
+.warning.darken-2 {
+	color: #FF976A !important;
+}
+.display-4 {
+	font-size: 3.5rem;
+	font-weight: 400;
+}
+.rounded-circle-img {
+	border-radius: 50%;
+	width: 60px;
+	padding: 2px;
+	height: auto;
+	border: 1px solid #ccc;
+}
+.dashboard-text {
+	font-size:18px;
+}
+.dashboard-karyawan-status {
+	padding:20px;
+}
+.calendar-options {
+	padding: 0.6rem 0.8rem !important;
+	font-weight:400;
+	margin-bottom: 5px;
+	border: 1px dotted #ccc;
+	text-transform: uppercase;
+}
+.quick-links-dashboard {
+	padding: 14px 15px !important;
+}

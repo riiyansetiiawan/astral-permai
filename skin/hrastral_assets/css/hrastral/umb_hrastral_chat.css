@@ -1,0 +1,64 @@
+.media .avatar {
+    flex-shrink: 0;
+}
+
+.avatar-xl {
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    font-size: 1.25rem;
+}
+.avatar {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #f5f6f7;
+    color: #9a9a9a;
+    text-transform: uppercase;
+}
+.media a:not(.btn):not(.avatar) {
+    color: #6c757d;
+}
+.media-list-hover > .media:not(.media-list-header):not(.media-list-footer):hover, .media-list-hover .media-list-body > .media:hover {
+    background-color: #f9fafb;
+}
+
+.media-list-divided > .media:not(.media-list-header):not(.media-list-footer), .media-list-divided .media-list-body > .media {
+    border-bottom: 1px solid rgba(97, 106, 120, 0.07);
+}
+.media-list > .media:not(.media-list-header):not(.media-list-footer), .media-list .media-list-body > .media {
+    margin-bottom: 0;
+}
+.media-single, .media-center-v {
+    -webkit-box-align: center;
+    align-items: center;
+}
+.media {
+    transition: background-color .2s linear;
+}
+.media {
+    flex-shrink: 0;
+}
+.avatar-md i {
+    right: 195px;
+	margin-top: 30px;
+    height: 10px;
+    width: 10px;
+}
+.avatar-online i {
+    background-color: #16D39A;
+}
+.avatar-busy i {
+    background-color: #FF7588;
+}
+.avatar-away i {
+    background-color: #FFA87D;
+}
+.avatar-md i {
+    position: absolute;
+    border-radius: 100%;
+}
+.chat-badge {
+    background: #222222 !important;
+}

@@ -1,0 +1,27 @@
+form .form-control {
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 0 !important;
+    border-top: 0 !important;
+}
+.select2-container--default .select2-selection--single {
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-top: 0 !important;
+    border-radius: 0 !important;
+}
+.dataTables_filter .form-control {
+	border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 0 !important;
+    border-top: 0 !important;
+}
+.dataTables_length .form-control {
+	border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 0 !important;
+    border-top: 0 !important;
+}
+.dt-buttons a{
+	border: 0 !important;
+}

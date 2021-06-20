@@ -1,0 +1,152 @@
+.tugas-name {
+	border-bottom:1px solid #666;
+}
+.form{
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+.form input[type="text"]{
+  padding: 10px;
+  box-shadow: inset 2px 2px 2px rgba(2,5,0,0.2);
+  border: none;
+}
+.tugas-media:first-child {
+	margin-left: 0;
+}
+.tugas-media {
+	margin-left: -15px;
+}
+.tugas-more-user {
+	margin-left: -12px;
+}
+.margin-top-15 {
+	margin-top: 15px;
+}
+.add-tugas {
+	cursor:pointer;
+}
+.button{
+  display: inline-block;
+  padding: 0px;
+  background: linear-gradient(#79a6e2 2%, #3366aa 5%, #1e4e8e);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 11px;
+  box-shadow: 0px 3px 0px #113c75,
+              0px 5px 5px #333;
+  margin-right: 5px;
+}
+
+.button-notstarted{
+  background: transparent;
+  box-shadow: none;
+  color: #8b8b8b;
+  font-weight: normal;
+}
+.button-progress{
+  background: transparent;
+  box-shadow: none;
+  color: #3366aa;
+  font-weight: normal;
+}
+.button-complete{
+  background: transparent;
+  box-shadow: none;
+  color: #007b03;
+  font-weight: normal;
+}
+.button-cancelled{
+  background: transparent;
+  box-shadow: none;
+  color: #c06300;
+  font-weight: normal;
+}
+.button-hold{
+  background: transparent;
+  box-shadow: none;
+  color: #6d7408;
+  font-weight: normal;
+}
+.button-delete{
+  background: transparent;
+  box-shadow: none;
+  color: #be0000;
+  font-weight: normal;
+}
+.form > h2{
+  margin-top: 0
+}
+.col-3rds{
+  box-sizing: border-box;
+  width:33.333%;
+  float:left;
+}
+.flex{
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+    min-width: 1610px;
+}
+.scrum-board{
+  flex: 1;
+ /* padding:20px;
+  border-right:1px solid #ddd;*/
+  border-bottom:1px solid #ddd;
+}
+.scrum-board:first-child{
+  flex: 1;
+  /*padding:20px;
+  border-left:1px solid #ddd;*/
+}
+.input-group{
+  position: relative;
+  display: block;
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-left: 5px solid #ccc;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #fef9f9;
+}
+.input-group span{
+  color:#333;
+  font-weight: bold;
+}
+.inline{
+  display: inline;
+}
+.float-right{
+  float: right;
+}
+.overflow{
+  overflow: auto;
+}
+.margin-top-10{
+  margin-top: 10px;
+}
+.drag{
+  font-size: 12px;
+  color: #333;
+  text-decoration: none;
+  position: absolute;
+    top:5px;
+  right: 5px;
+  border: 1px solid #ccc;
+  padding: 3px;
+  border-radius: 5px;
+  cursor: move;
+}
+.placeholder {
+  display: block;
+  background-color: #fff;
+  border: 5px dashed #ededed;
+  min-height: 100px;
+  margin-bottom: 10px;
+}
+.hrastral-scrum-board {
+	padding-right: 5px !important;
+    padding-left: 5px !important;
+	width: 335px !important;
+}

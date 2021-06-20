@@ -1,0 +1,69 @@
+HRASTRAL- Riyan Setiawan
+
+PERJANJIAN LISENSI INI (SELANJUTNYA SETELAH PERJANJIAN) ADALAH PERJANJIAN ANTARA ANDA
+ORANG ATAU PERUSAHAAN YANG DILISENSI UNTUK MENGGUNAKAN PERANGKAT LUNAK ATAU DOKUMENTASI)
+DAN hrastral.COM (SELANJUTNYA KAMI/US/OUR). PERJANJIAN BERLAKU UNTUK SEMUA
+PRODUK/PERANGKAT LUNAK/SKRIP/LAYANAN YANG ANDA BELI DARI KAMI.
+
+(1) Dengan membeli perangkat lunak, Anda mengakui bahwa Anda telah membaca Perjanjian ini,
+dan bahwa Anda menyetujui isi Perjanjian dan ketentuannya, dan setuju
+untuk menggunakan perangkat lunak sesuai dengan Perjanjian ini.
+
+(2) Perjanjian ini mulai berlaku secara hukum pada saat Anda memesan
+perangkat lunak dari situs kami atau menerimanya melalui email atau media data di
+kebijaksanaan kami.
+
+(3) Kami adalah pemegang hak cipta dari perangkat lunak tersebut. Perangkat lunak atau sebagian darinya
+merupakan hal yang memiliki hak cipta dan harus dilindungi oleh undang-undang. Apa saja
+aktivitas yang melanggar ketentuan Perjanjian ini melanggar hukum hak cipta dan
+akan diproses sesuai hukum yang berlaku. Kami berhak untuk
+mencabut lisensi dari setiap pengguna yang memegang lisensi yang tidak valid.
+
+(4) Perjanjian ini memberi Anda hak untuk menggunakan hanya satu salinan perangkat lunak di
+satu domain semata-mata untuk penggunaan pribadi atau bisnis Anda sendiri, tunduk pada semua domain lainnya
+ketentuan Perjanjian ini. Lisensi terpisah harus dibeli untuk setiap yang baru
+instalasi perangkat lunak. Setiap distribusi perangkat lunak tanpa persetujuan kami,
+termasuk distribusi nonkomersial dianggap sebagai pelanggaran terhadap ini
+Perjanjian dan memerlukan tanggung jawab, menurut hukum saat ini.
+
+(5) Anda tidak boleh menggunakan bagian mana pun dari kode secara keseluruhan atau sebagian dalam perangkat lunak lain
+atau produk atau situs web.
+
+(6) Anda tidak boleh memberikan, menjual, mendistribusikan, mensublisensikan, menyewakan, menyewakan, atau meminjamkan apa pun bagian dari perangkat lunak atau dokumentasi kepada siapa pun. Anda tidak boleh menempatkan
+perangkat lunak pada server sehingga dapat diakses melalui jaringan publik seperti:
+internet untuk tujuan distribusi.
+
+(7) Anda terikat untuk menjaga informasi hak cipta tetap utuh, ini termasuk:
+teks/tautan di bawah.
+
+(8) Kami berhak untuk mempublikasikan daftar pengguna perangkat lunak kami yang dipilih.
+
+(9)Kami tidak akan bertanggung jawab kepada Anda atas segala kerusakan (termasuk kehilangan
+keuntungan/tabungan, atau insidental atau konsekuensial) yang disebabkan oleh Anda,
+informasi dan bisnis Anda yang timbul dari penggunaan atau ketidakmampuan untuk menggunakan
+perangkat lunak ini.
+
+(10) Kami tidak bertanggung jawab atas tuntutan yang timbul dari penggunaan perangkat lunak terhadap
+hukum atau untuk penggunaan ilegal.
+
+(11) If you fail to use the software in accordance with the terms and conditions
+of this License Agreement, it constitutes a breach of the agreement, and
+your license to use the program is revoked.
+
+(12) hrastral berhak untuk mengubah perjanjian lisensi ini kapan saja
+waktu dan memaksakan klausulnya pada waktu tertentu.
+
+(13) Perjanjian lisensi tetap berlaku sampai diakhiri. Kami mempertahankan hak untuk
+mengakhiri lisensi Anda untuk menggunakan perangkat lunak kapan saja, jika dalam satu-satunya
+kebijaksanaan, Anda tidak mematuhi ketentuan Perjanjian, termasuk,
+tetapi tidak terbatas pada, mengaburkan atau menghapus tautan atau pemberitahuan hak cipta apa pun sebagai
+ditentukan dalam perjanjian ini. Anda dapat menghentikannya kapan saja dengan menghancurkan
+semua salinan perangkat lunak. penghentian Perjanjian ini tidak mengikat kami
+untuk mengembalikan Anda jumlah yang dihabiskan untuk pembelian perangkat lunak.
+
+(14) Jika Anda terus menggunakan perangkat lunak setelah hrastral memberi Anda pemberitahuan
+penghentian lisensi Anda, Anda dengan ini setuju untuk menerima perintah untuk
+melarang Anda untuk menggunakannya lebih lanjut dan untuk membayar semua biaya (termasuk tetapi tidak)
+terbatas pada biaya pengacara yang wajar) untuk menegakkan pencabutan kami atas
+lisensi dan segala kerusakan yang kami derita karena penyalahgunaan Anda atas
+perangkat lunak.

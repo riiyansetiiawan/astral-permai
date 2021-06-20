@@ -1,0 +1,383 @@
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700,900);
+
+a,
+a:focus {
+    text-decoration: none
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Titillium Web', sans-serif
+}
+
+body,
+html {
+    background-color: #f0f2f5;
+    background-image: url(../../img/bg/bg-4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility
+}
+
+body {
+    font-size: 1.6em;
+    font-weight: 400;
+    color: #44525f
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none
+}
+
+a:focus {
+    outline: 0
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #2d385e
+}
+
+a,
+a:focus,
+a:hover {
+    color: #4f77ff
+}
+
+.btn-primary {
+    background-color: #4f77ff;
+    border-color: #4f77ff
+}
+
+.btn-primary.active,
+.btn-primary:active,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.btn-primary:focus,
+.btn-primary:hover {
+    background-color: #486ff2;
+    border-color: #486ff2
+}
+
+.authfy-login .btn.btn-lg {
+    border-radius: 3px;
+    box-shadow: 0 2px 3px #9c9c9c
+}
+
+.brand-logo {
+    margin-top: 0;
+    margin-bottom: 35px
+}
+
+.authfy-container {
+    margin-top: 97px;
+    margin-bottom: 97px
+}
+
+.authfy-panel-left {
+    background-color: rgba(38, 43, 72, .92);
+    color: #fff;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    -webkit-box-shadow: 0 3px 6px #1d2030;
+    box-shadow: 0 3px 6px #1d2030
+}
+
+.authfy-panel-right {
+    background-color: #fff;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -webkit-box-shadow: 0 2px 6px 0 #1d2030;
+    box-shadow: 0 2px 6px 0 #1d2030
+}
+
+.authfy-login,
+.authfy-panel-left .brand-col {
+    height: 460px
+}
+
+.authfy-panel-left .brand-col {
+    display: table;
+    width: 100%;
+    padding: 25px
+}
+
+.authfy-panel-left .brand-col .headline {
+    display: table-cell;
+    vertical-align: middle
+}
+
+.authfy-panel-left .brand-col .headline h1,
+.authfy-panel-left .brand-col .headline h2,
+.authfy-panel-left .brand-col .headline h3 {
+    color: #fff;
+    font-size: 48px;
+    font-weight: 700
+}
+
+.authfy-login {
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden
+}
+
+.authfy-panel {
+    padding: 20px 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all .5s ease;
+    opacity: 0;
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%)
+}
+
+.authfy-panel .authfy-heading {
+    margin-bottom: 30px
+}
+
+.authfy-login .auth-title {
+    font-weight: 700
+}
+
+.authfy-login .authfy-panel.active {
+    opacity: 1;
+    transform: translateX(0);
+    -webkit-transform: translateX(0)
+}
+
+.brand-col .social-buttons a {
+    color: #fff;
+    margin-top: 15px
+}
+
+.brand-col .social-buttons a:hover {
+    color: #fff;
+    opacity: .9
+}
+
+.brand-col .social-buttons .btn-facebook {
+    background: #3b5998
+}
+
+.brand-col .social-buttons .btn-twitter {
+    background: #00aced
+}
+
+.brand-col .social-buttons .btn-google {
+    background: #c32f10
+}
+
+.brand-col .social-buttons a>span {
+    padding-left: 5px
+}
+
+.panel-login {
+    margin-top: 20px
+}
+
+.panel-login .remember-row {
+    margin-bottom: 10px
+}
+
+.panel-login .remember-row label {
+    font-weight: 400;
+    position: relative;
+    cursor: pointer;
+    color: #666;
+    padding-left: 24px
+}
+
+.authfy-login .forgotPwd {
+    text-align: right;
+    margin-top: 10px
+}
+
+.panel-forgot .form-control,
+.panel-login .form-control,
+.panel-signup .form-control {
+    background-color: #fff;
+    color: #333;
+    font-size: 18px;
+    height: 50px;
+    margin-bottom: 20px;
+    padding: 12px 22px;
+    border-radius: 3px;
+    border: 1px solid #bcc2ce;
+    outline: 0;
+    -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .1), 0 0 2px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .1), 0 0 2px 0 rgba(0, 0, 0, .1)
+}
+
+.authfy-panel.panel-forgot {
+    padding-top: 40px
+}
+
+.panel-forgot .form-control:focus,
+.panel-login .form-control:focus,
+.panel-signup .form-control:focus {
+    border-color: #4f77ff;
+    z-index: 2;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+}
+
+.pwdMask {
+    position: relative
+}
+
+.pwdMask .pwd-toggle {
+    color: #ccc;
+    position: absolute;
+    z-index: 2
+}
+
+.panel-login .pwdMask .pwd-toggle,
+.panel-signup .pwdMask .pwd-toggle {
+    top: 15px;
+    right: 15px
+}
+
+.pwdMask .pwd-toggle:focus,
+.pwdMask .pwd-toggle:hover {
+    cursor: pointer
+}
+
+.pwdMask .pwd-toggle.fa-eye,
+.pwdMask .pwd-toggle:focus,
+.pwdMask .pwd-toggle:hover {
+    color: #4f77ff
+}
+
+.panel-signup .term-policy a {
+    text-decoration: underline
+}
+
+.checkbox input[type=checkbox] {
+    position: absolute;
+    right: 9000px;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer
+}
+
+.checkbox input[type=checkbox]+.label-text:after,
+.checkbox input[type=checkbox]+.label-text:before {
+    font-size: 11px;
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    padding: 2px;
+    margin-left: 0;
+    position: absolute;
+    top: 2px;
+    left: 0
+}
+
+.checkbox input[type=checkbox]+.label-text:before {
+    content: "";
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-transition: border .15s ease-in-out, color .15s ease-in-out;
+    transition: border .15s ease-in-out, color .15s ease-in-out
+}
+
+.checkbox input[type=checkbox]+.label-text:after {
+    background-color: #4f77ff;
+    color: #fff;
+    border-radius: 2px;
+    border-color: #4f77ff;
+    line-height: 1.4
+}
+
+.checkbox input[type=checkbox]:focus+.label-text:before {
+    outline: dotted thin;
+    outline: -webkit-focus-ring-color auto 5px;
+    outline-offset: -2px
+}
+
+.checkbox input[type=checkbox]:checked+.label-text:after {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+@media (min-width:768px) {
+    .authfy-panel {
+        padding: 20px
+    }
+}
+
+@media (max-width:767px) {
+
+    .authfy-panel-left,
+    .authfy-panel-right {
+        box-shadow: none
+    }
+
+    .authfy-panel-left {
+        border-radius: 4px 4px 0 0
+    }
+
+    .authfy-panel-right {
+        border-radius: 0 0 4px 4px
+    }
+
+    .authfy-panel-left .brand-col {
+        height: 300px;
+        text-align: center
+    }
+
+    .term-policy {
+        font-size: 75%
+    }
+}
+
+@media (min-width:320px) and (max-width:375px) {
+    .authfy-login .authfy-panel {
+        padding: 20px
+    }
+
+    .panel-login .remember-row {
+        margin-bottom: 10px;
+        font-size: 14px
+    }
+}
+
+@media (max-width:320px) {
+    .authfy-login {
+        height: 480px
+    }
+
+    .authfy-heading p {
+        font-size: 14px
+    }
+
+    .remember-row .col-sm-6 {
+        width: 100%
+    }
+
+    .authfy-login .forgotPwd {
+        text-align: left;
+        margin-top: 0
+    }
+}
