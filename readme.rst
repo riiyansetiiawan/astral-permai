@@ -11,7 +11,7 @@ Perjalanan, Lembur, Promosi, Tiket keluhan dan Training
 *******************
 Informasi Rilis HRASTRAL
 *******************
-
+![hrastralclient](https://user-images.githubusercontent.com/42500531/122664161-cba2ae00-d1c9-11eb-9d79-a8a35d6c83ba.png)
 HRASTRAL RILIS pada bulan 01 juni 2021.
 
 *******************
