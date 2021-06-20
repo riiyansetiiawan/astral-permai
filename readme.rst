@@ -19,7 +19,7 @@ TATA CARA INSTALL HRASTRAL
 *******************
 
 pertama :
-clone dan download aplikasi di github 
+clone dan download aplikasi di github https://github.com/riiyansetiiawan/astral-permai.git
 
 **************************
 Changelog and New Features
