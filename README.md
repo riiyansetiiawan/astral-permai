@@ -27,4 +27,4 @@ TATA CARA INSTALL HRASTRAL
 
 Pertama :
 clone dan download aplikasi di github <br/>
-[install](https://github.com/riiyansetiawan/install/index.php)
+[install](https://github.com/riiyansetiawan/install/)
