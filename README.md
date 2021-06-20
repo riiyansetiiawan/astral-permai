@@ -1,7 +1,9 @@
 *******************
 # APA ITU HRASTRAL
 *******************
-<img align="right" width="100" height="100" src="https://user-images.githubusercontent.com/42500531/122664161-cba2ae00-d1c9-11eb-9d79-a8a35d6c83ba.png">
+<p align="center">
+  <img width="460" height="300" src="https://user-images.githubusercontent.com/42500531/122664161-cba2ae00-d1c9-11eb-9d79-a8a35d6c83ba.png">
+</p>
 
 HRASTRAL adalah aplikasi human resource management yang bisa membatu Tim Manajemen perusahaan
 untuk memonitoring karyawan dalam segi Akuntansi, Asset Perusahaan, Biaya Pendapatan dan Pengeluaran,
