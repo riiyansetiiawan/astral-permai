@@ -12,7 +12,7 @@ Kehadiran, Tugas, Penggajian, Proyek, Penghargaan, Penghentian, Pengunduran diri
 Perjalanan, Lembur, Promosi, Tiket keluhan dan Training
 
 *******************
-Informasi Rilis HRASTRAL
+Informasi Rilis HRASTRAL <img align="right" width="50" height="80" src="https://user-images.githubusercontent.com/42500531/122683760-8a42ea80-d22b-11eb-8294-a68aae196704.png">
 *******************
 <p align="center">
   <img width="150" height="100" src="https://user-images.githubusercontent.com/42500531/122683760-8a42ea80-d22b-11eb-8294-a68aae196704.png">
