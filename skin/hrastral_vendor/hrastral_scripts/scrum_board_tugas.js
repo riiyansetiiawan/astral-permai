@@ -1,6 +1,4 @@
 $(function() {
-
-    // tugas Kanban Board
     dragula([
             document.getElementById('first-notstarted'),
             document.getElementById('first-inprogress'),

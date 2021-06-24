@@ -14,16 +14,9 @@ $(document).ready(function() {
             jQuery('#ajax_karyawan').html(data);
         });
     });
-
-
-
     $('[data-plugin="select_hrm"]').select2($(this).attr('data-options'));
     $('[data-plugin="select_hrm"]').select2({ width: '100%' });
-
-
-    /* update_laporan_kehadiran */
     $("#update_laporan_kehadiran").submit(function(e) {
-
         e.preventDefault();
         var karyawan_id = $('#up_karyawan_id').val();
         var tanggal_kehadiran = $('#tanggal_kehadiran').val();
@@ -44,9 +37,7 @@ $(document).ready(function() {
         }, true);
     });
 
-
     $("#delete_record").submit(function(e) {
-
         e.preventDefault();
         var obj = $(this),
             action = obj.attr('name');
@@ -72,7 +63,6 @@ $(document).ready(function() {
         });
     });
 
-    // add kehadiran
     $('.add-modal-data').on('show.bs.modal', function(event) {
         var karyawan_id = $('#up_karyawan_id').val();
         var button = $(event.relatedTarget);
@@ -89,7 +79,6 @@ $(document).ready(function() {
         });
     });
 
-    // edit
     $('.edit-modal-data').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget);
         var kehadiran_id = button.data('kehadiran_id');
@@ -106,6 +95,7 @@ $(document).ready(function() {
         });
     });
 });
+
 $(document).on("click", ".delete", function() {
     $('input[name=_token]').val($(this).data('record-id'));
     $('#delete_record').attr('action', site_url + 'timesheet/delete_kehadiran/' + $(this).data('record-id')) + '/';

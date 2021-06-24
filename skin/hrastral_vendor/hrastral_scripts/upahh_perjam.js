@@ -14,8 +14,6 @@ $(document).ready(function() {
 
     $('[data-plugin="select_hrm"]').select2($(this).attr('data-options'));
     $('[data-plugin="select_hrm"]').select2({ width: '100%' });
-
-
     $("#delete_record").submit(function(e) {
 
         e.preventDefault();
@@ -41,7 +39,6 @@ $(document).ready(function() {
         });
     });
 
-    // edit
     $('.edit-modal-data').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget);
         var nilai_perjam_id = button.data('nilai_perjam_id');
@@ -57,7 +54,6 @@ $(document).ready(function() {
             }
         });
     });
-
 
     $("#umb-form").submit(function(e) {
         e.preventDefault();

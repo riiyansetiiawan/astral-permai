@@ -718,8 +718,8 @@ $(document).ready(function() {
             }
         });
     });
-    jQuery("#orgchart_info").submit(function(e) {
 
+    jQuery("#orgchart_info").submit(function(e) {
         e.preventDefault();
         var obj = jQuery(this),
             action = obj.attr('name');

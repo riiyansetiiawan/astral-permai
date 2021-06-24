@@ -31,7 +31,6 @@ $(document).ready(function() {
         });
     });
 
-    // Month & Year
     $('.ln_month_year').datepicker({
         changeMonth: true,
         changeYear: true,
@@ -50,7 +49,7 @@ $(document).ready(function() {
         }
 
     });
-    // get current val
+
     $(".gaji_pokok").keyup(function(e) {
         var to_currency_rate = $('#to_currency_rate').val();
         var curr_val = $(this).val();
@@ -58,6 +57,7 @@ $(document).ready(function() {
         var float_val = final_val.toFixed(2);
         $('#current_cur_val').html(float_val);
     });
+
     $(".upahh_harian").keyup(function(e) {
         var to_currency_rate = $('#to_currency_rate').val();
         var curr_val = $(this).val();
@@ -65,7 +65,7 @@ $(document).ready(function() {
         var float_val = final_val.toFixed(2);
         $('#current_cur_val2').html(float_val);
     });
-    // On page load 
+
     var umb_table_krywn_lembur = $('#umb_table_krywn_lembur').dataTable({
         "bDestroy": true,
         "ajax": {
@@ -77,7 +77,6 @@ $(document).ready(function() {
         }
     });
 
-    // On page load 
     var umb_table_tunjangans_ad = $('#umb_table_all_tunjangans').dataTable({
         "bDestroy": true,
         "ajax": {
@@ -119,7 +118,7 @@ $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         }
     });
-    // On page load 
+
     var umb_table_all_potongans = $('#umb_table_all_potongans').dataTable({
         "bDestroy": true,
         "ajax": {
@@ -130,9 +129,8 @@ $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         }
     });
-    /* */
-    $("#karyawan_update_gaji").submit(function(e) {
 
+    $("#karyawan_update_gaji").submit(function(e) {
         e.preventDefault();
         var obj = $(this),
             action = obj.attr('name');
@@ -161,7 +159,7 @@ $(document).ready(function() {
             }
         });
     });
-    // add loan
+
     $("#add_pinjaman_info").submit(function(e) {
 
         e.preventDefault();
@@ -197,7 +195,6 @@ $(document).ready(function() {
         });
     });
 
-    /* Add info */
     jQuery("#karyawan_update_tunjangan").submit(function(e) {
 
         e.preventDefault();
@@ -228,7 +225,7 @@ $(document).ready(function() {
             }
         });
     });
-    /* */
+
     jQuery("#karyawan_update_komissi").submit(function(e) {
 
         e.preventDefault();
@@ -259,6 +256,7 @@ $(document).ready(function() {
             }
         });
     });
+
     jQuery("#statutory_potongans_info").submit(function(e) {
 
         e.preventDefault();
@@ -289,6 +287,7 @@ $(document).ready(function() {
             }
         });
     });
+
     jQuery("#pembayarans_lainnya_info").submit(function(e) {
 
         e.preventDefault();
@@ -319,7 +318,7 @@ $(document).ready(function() {
             }
         });
     });
-    /* */
+
     $("#lembur_info").submit(function(e) {
 
         e.preventDefault();
@@ -375,8 +374,6 @@ $(document).ready(function() {
             var field_add = '&is_ajax=30&data=delete_record&type=pembayaran_lainnya&';
             var tb_name = 'umb_table_' + tk_type;
         }
-
-
         e.preventDefault();
         var obj = $(this),
             action = obj.attr('name');
@@ -401,18 +398,18 @@ $(document).ready(function() {
             }
         });
     });
-    /// delete a record
+
     $(document).on("click", ".delete", function() {
         $('input[name=_token]').val($(this).data('record-id'));
         $('input[name=token_type]').val($(this).data('token_type'));
         $('#delete_record').attr('action', site_url + 'karyawans/delete_' + $(this).data('token_type') + '/' + $(this).data('record-id'));
     });
 });
+
 $(document).ready(function() {
 
     $('[data-plugin="select_hrm"]').select2($(this).attr('data-options'));
     $('[data-plugin="select_hrm"]').select2({ width: '100%' });
-
     $('.cont_date').datepicker({
         changeMonth: true,
         changeYear: true,
