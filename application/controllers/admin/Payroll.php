@@ -253,47 +253,47 @@ class Payroll extends MY_Controller {
 				
 			}				
 
-			$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($r->user_id);
-			$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($r->user_id);
-			$jumlah_tunjanagan = 0;
-			if($count_tunjanagans > 0) {
-				foreach($gaji_tunjanagans as $sl_tunjanagans){
+			$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($r->user_id);
+			$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($r->user_id);
+			$jumlah_tunjangan = 0;
+			if($count_tunjangans > 0) {
+				foreach($gaji_tunjangans as $sl_tunjangans){
 					if($system[0]->is_half_monthly==1){
 						if($system[0]->potong_setengah_bulan==2){
-							$ejumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan/2;
+							$ejumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan/2;
 						} else {
-							$ejumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+							$ejumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 						}
-						$jumlah_tunjanagan += $ejumlah_tunjanagan;
+						$jumlah_tunjangan += $ejumlah_tunjangan;
 					} else {
-						//$ejumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
-						if($sl_tunjanagans->is_tunjanagan_kena_pajak == 1) {
-							if($sl_tunjanagans->jumlah_option == 0) {
-								$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+						//$ejumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
+						if($sl_tunjangans->is_tunjangan_kena_pajak == 1) {
+							if($sl_tunjangans->jumlah_option == 0) {
+								$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 							} else {
-								$ijumlah_tunjanagan = $gaji_pokok / 100 * $sl_tunjanagans->jumlah_tunjanagan;
+								$ijumlah_tunjangan = $gaji_pokok / 100 * $sl_tunjangans->jumlah_tunjangan;
 							}
-							$jumlah_tunjanagan -= $ijumlah_tunjanagan; 
-						} else if($sl_tunjanagans->is_tunjanagan_kena_pajak == 2) {
-							if($sl_tunjanagans->jumlah_option == 0) {
-								$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan / 2;
+							$jumlah_tunjangan -= $ijumlah_tunjangan; 
+						} else if($sl_tunjangans->is_tunjangan_kena_pajak == 2) {
+							if($sl_tunjangans->jumlah_option == 0) {
+								$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan / 2;
 							} else {
-								$ijumlah_tunjanagan = ($gaji_pokok / 100) / 2 * $sl_tunjanagans->jumlah_tunjanagan;
+								$ijumlah_tunjangan = ($gaji_pokok / 100) / 2 * $sl_tunjangans->jumlah_tunjangan;
 							}
-							$jumlah_tunjanagan -= $ijumlah_tunjanagan; 
+							$jumlah_tunjangan -= $ijumlah_tunjangan; 
 						} else {
-							if($sl_tunjanagans->jumlah_option == 0) {
-								$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+							if($sl_tunjangans->jumlah_option == 0) {
+								$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 							} else {
-								$ijumlah_tunjanagan = $gaji_pokok / 100 * $sl_tunjanagans->jumlah_tunjanagan;
+								$ijumlah_tunjangan = $gaji_pokok / 100 * $sl_tunjangans->jumlah_tunjangan;
 							}
-							$jumlah_tunjanagan += $ijumlah_tunjanagan;
+							$jumlah_tunjangan += $ijumlah_tunjangan;
 						}
 					}
 					
 				}
 			} else {
-				$jumlah_tunjanagan = 0;
+				$jumlah_tunjangan = 0;
 			}
 			
 			$gaji_pinjaman_potongan = $this->Karyawans_model->read_gaji_pinjaman_potongans($r->user_id);
@@ -454,14 +454,14 @@ class Payroll extends MY_Controller {
 			}
 			
 			if($system[0]->enable_asuransi != 0){
-				$jml_asuransi = $gaji_pokok + $jumlah_tunjanagan;
+				$jml_asuransi = $gaji_pokok + $jumlah_tunjangan;
 				$enable_asuransi = $jml_asuransi / 100 * $system[0]->enable_asuransi;
 				$asuransi = $enable_asuransi;
 			} else {
 				$asuransi = 0;
 			}
 
-			$total_earning = $gaji_pokok + $jumlah_tunjanagan + $jumlah_lembur + $jumlah_komissi + $jumlah_pembayarans_lainnya + $asuransi;
+			$total_earning = $gaji_pokok + $jumlah_tunjangan + $jumlah_lembur + $jumlah_komissi + $jumlah_pembayarans_lainnya + $asuransi;
 			$total_potongan = $jumlah_ptng_pinjaman + $jumlah_statutory_potongans;
 			$total_gaji_bersih = $total_earning - $total_potongan;
 			$gaji_bersih = $total_gaji_bersih;
@@ -512,7 +512,7 @@ class Payroll extends MY_Controller {
 			$total_gaji_bersih = $total_gaji_bersih - $advance_jumlah;
 			//	$gaji_bersih = $fgaji_bersih - $jumlah_ptng_pinjaman;
 			//$gaji_pokok_cal = $gaji_pokok * $current_rate; 
-			//$allinfo = $gaji_pokok  .' - '.  $jumlah_tunjanagan  .' - '.  $all_pembayaran_lainnya  .' - '.  $jumlah_ptng_pinjaman  .' - '.  $jumlah_lembur  .' - '.  $statutory_potongans; // for testing purpose
+			//$allinfo = $gaji_pokok  .' - '.  $jumlah_tunjangan  .' - '.  $all_pembayaran_lainnya  .' - '.  $jumlah_ptng_pinjaman  .' - '.  $jumlah_lembur  .' - '.  $statutory_potongans; // for testing purpose
 			if($system[0]->is_half_monthly==1){
 				$check_pembayaran = $this->Payroll_model->read_melakukan_pembayaran_slipgaji_half_month_check($r->user_id,$p_date);
 				$pembayaran_terakhir = $this->Payroll_model->read_melakukan_pembayaran_slipgaji_half_month_check_last($r->user_id,$p_date);
@@ -1020,7 +1020,7 @@ class Payroll extends MY_Controller {
 				'total_komissi' => $this->input->post('total_komissi'),
 				'total_statutory_potongans' => $this->input->post('total_statutory_potongans'),
 				'total_pembayarans_lainnya' => $this->input->post('total_pembayarans_lainnya'),
-				'total_tunjanagans' => $this->input->post('total_tunjanagans'),
+				'total_tunjangans' => $this->input->post('total_tunjangans'),
 				'total_pinjaman' => $this->input->post('total_pinjaman'),
 				'total_lembur' => $this->input->post('total_lembur'),
 				'jumlah_asuransi' => $this->input->post('jumlah_asuransi'),
@@ -1066,32 +1066,32 @@ class Payroll extends MY_Controller {
 					'saldo_account' => $acc_saldo
 				);
 				$this->Keuangan_model->update_record_bankcash($data3,$online_payment_account);
-				$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($this->input->post('krywn_id'));
-				$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($this->input->post('krywn_id'));
-				$jumlah_tunjanagan = 0;
-				if($count_tunjanagans > 0) {
-					foreach($gaji_tunjanagans as $sl_tunjanagans){
-						$esl_tunjanagans = $sl_tunjanagans->jumlah_tunjanagan;
+				$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($this->input->post('krywn_id'));
+				$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($this->input->post('krywn_id'));
+				$jumlah_tunjangan = 0;
+				if($count_tunjangans > 0) {
+					foreach($gaji_tunjangans as $sl_tunjangans){
+						$esl_tunjangans = $sl_tunjangans->jumlah_tunjangan;
 						if($system[0]->is_half_monthly==1){
 							if($system[0]->potong_setengah_bulan==2){
-								$ejumlah_tunjanagan = $esl_tunjanagans/2;
+								$ejumlah_tunjangan = $esl_tunjangans/2;
 							} else {
-								$ejumlah_tunjanagan = $esl_tunjanagans;
+								$ejumlah_tunjangan = $esl_tunjangans;
 							}
 						} else {
-							$ejumlah_tunjanagan = $esl_tunjanagans;
+							$ejumlah_tunjangan = $esl_tunjangans;
 						}
-						$tunjanagan_data = array(
+						$tunjangan_data = array(
 							'slipgaji_id' => $result,
 							'karyawan_id' => $this->input->post('krywn_id'),
 							'gaji_bulan' => $this->input->post('pay_date'),
-							'title_tunjanagan' => $sl_tunjanagans->title_tunjanagan,
-							'jumlah_tunjanagan' => $ejumlah_tunjanagan,
-							'is_tunjanagan_kena_pajak' => $sl_tunjanagans->is_tunjanagan_kena_pajak,
-							'jumlah_option' => $sl_tunjanagans->jumlah_option,
+							'title_tunjangan' => $sl_tunjangans->title_tunjangan,
+							'jumlah_tunjangan' => $ejumlah_tunjangan,
+							'is_tunjangan_kena_pajak' => $sl_tunjangans->is_tunjangan_kena_pajak,
+							'jumlah_option' => $sl_tunjangans->jumlah_option,
 							'created_at' => date('d-m-Y h:i:s')
 						);
-						$_tunjanagan_data = $this->Payroll_model->add_gaji_slipgaji_tunjanagans($tunjanagan_data);
+						$_tunjangan_data = $this->Payroll_model->add_gaji_slipgaji_tunjangans($tunjangan_data);
 					}
 				}
 				$gaji_komissi = $this->Karyawans_model->read_gaji_komissi($this->input->post('krywn_id'));
@@ -1274,7 +1274,7 @@ class Payroll extends MY_Controller {
 				'total_komissi' => $this->input->post('total_komissi'),
 				'total_statutory_potongans' => $this->input->post('total_statutory_potongans'),
 				'total_pembayarans_lainnya' => $this->input->post('total_pembayarans_lainnya'),
-				'total_tunjanagans' => $this->input->post('total_tunjanagans'),
+				'total_tunjangans' => $this->input->post('total_tunjangans'),
 				'total_pinjaman' => $this->input->post('total_pinjaman'),
 				'total_lembur' => $this->input->post('total_lembur'),
 				'jam_bekerja' => $this->input->post('jam_bekerja'),
@@ -1319,22 +1319,22 @@ class Payroll extends MY_Controller {
 				);
 				$this->Keuangan_model->update_record_bankcash($data3,$online_payment_account);
 
-				$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($this->input->post('krywn_id'));
-				$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($this->input->post('krywn_id'));
-				$jumlah_tunjanagan = 0;
-				if($count_tunjanagans > 0) {
-					foreach($gaji_tunjanagans as $sl_tunjanagans){
-						$tunjanagan_data = array(
+				$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($this->input->post('krywn_id'));
+				$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($this->input->post('krywn_id'));
+				$jumlah_tunjangan = 0;
+				if($count_tunjangans > 0) {
+					foreach($gaji_tunjangans as $sl_tunjangans){
+						$tunjangan_data = array(
 							'slipgaji_id' => $result,
 							'karyawan_id' => $this->input->post('krywn_id'),
 							'gaji_bulan' => $this->input->post('pay_date'),
-							'title_tunjanagan' => $sl_tunjanagans->title_tunjanagan,
-							'jumlah_tunjanagan' => $sl_tunjanagans->jumlah_tunjanagan,
-							'is_tunjanagan_kena_pajak' => $sl_tunjanagans->is_tunjanagan_kena_pajak,
-							'jumlah_option' => $sl_tunjanagans->jumlah_option,
+							'title_tunjangan' => $sl_tunjangans->title_tunjangan,
+							'jumlah_tunjangan' => $sl_tunjangans->jumlah_tunjangan,
+							'is_tunjangan_kena_pajak' => $sl_tunjangans->is_tunjangan_kena_pajak,
+							'jumlah_option' => $sl_tunjangans->jumlah_option,
 							'created_at' => date('d-m-Y h:i:s')
 						);
-						$_tunjanagan_data = $this->Payroll_model->add_gaji_slipgaji_tunjanagans($tunjanagan_data);
+						$_tunjangan_data = $this->Payroll_model->add_gaji_slipgaji_tunjangans($tunjangan_data);
 					}
 				}
 
@@ -1504,25 +1504,25 @@ class Payroll extends MY_Controller {
 						$department_id = 1;	
 					}
 
-					$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($user_id);
-					$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($user_id);
-					$jumlah_tunjanagan = 0;
-					if($count_tunjanagans > 0) {
-						foreach($gaji_tunjanagans as $sl_tunjanagans){
+					$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($user_id);
+					$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($user_id);
+					$jumlah_tunjangan = 0;
+					if($count_tunjangans > 0) {
+						foreach($gaji_tunjangans as $sl_tunjangans){
 							if($system[0]->is_half_monthly==1){
 								if($system[0]->potong_setengah_bulan==2){
-									$ejumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan/2;
+									$ejumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan/2;
 								} else {
-									$ejumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+									$ejumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 								}
 							} else {
-								$ejumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+								$ejumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 							}
-							$jumlah_tunjanagan += $ejumlah_tunjanagan;
-							//  $jumlah_tunjanagan += $sl_tunjanagans->jumlah_tunjanagan;
+							$jumlah_tunjangan += $ejumlah_tunjangan;
+							//  $jumlah_tunjangan += $sl_tunjangans->jumlah_tunjangan;
 						}
 					} else {
-						$jumlah_tunjanagan = 0;
+						$jumlah_tunjangan = 0;
 					}
 
 					$gaji_pinjaman_potongan = $this->Karyawans_model->read_gaji_pinjaman_potongans($user_id);
@@ -1642,7 +1642,7 @@ class Payroll extends MY_Controller {
 						}
 					endif;
 
-					$add_gaji = $jumlah_tunjanagan + $gaji_pokok + $jumlah_lembur + $jumlah_pembayarans_lainnya + $jumlah_komissi;
+					$add_gaji = $jumlah_tunjangan + $gaji_pokok + $jumlah_lembur + $jumlah_pembayarans_lainnya + $jumlah_komissi;
 					$gaji_bersih_default = $add_gaji - $jumlah_ptng_pinjaman - $jumlah_statutory_potongans;
 					$gaji_bersih = $gaji_bersih_default;
 					$gaji_bersih = number_format((float)$gaji_bersih, 2, '.', '');
@@ -1656,7 +1656,7 @@ class Payroll extends MY_Controller {
 						'gaji_pokok' => $gaji_pokok,
 						'gaji_bersih' => $gaji_bersih,
 						'type_upahh' => $krywnid->type_upahh,
-						'total_tunjanagans' => $jumlah_tunjanagan,
+						'total_tunjangans' => $jumlah_tunjangan,
 						'total_pinjaman' => $jumlah_ptng_pinjaman,
 						'total_lembur' => $jumlah_lembur,
 						'total_komissi' => $jumlah_komissi,
@@ -1695,22 +1695,22 @@ class Payroll extends MY_Controller {
 						);
 						$this->Keuangan_model->update_record_bankcash($data3,$online_payment_account);
 
-						$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($user_id);
-						$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($user_id);
-						$jumlah_tunjanagan = 0;
-						if($count_tunjanagans > 0) {
-							foreach($gaji_tunjanagans as $sl_tunjanagans){
-								$tunjanagan_data = array(
+						$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($user_id);
+						$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($user_id);
+						$jumlah_tunjangan = 0;
+						if($count_tunjangans > 0) {
+							foreach($gaji_tunjangans as $sl_tunjangans){
+								$tunjangan_data = array(
 									'slipgaji_id' => $result,
 									'karyawan_id' => $user_id,
 									'gaji_bulan' => $this->input->post('month_year'),
-									'title_tunjanagan' => $sl_tunjanagans->title_tunjanagan,
-									'jumlah_tunjanagan' => $sl_tunjanagans->jumlah_tunjanagan,
-									'is_tunjanagan_kena_pajak' => $sl_tunjanagans->is_tunjanagan_kena_pajak,
-									'jumlah_option' => $sl_tunjanagans->jumlah_option,
+									'title_tunjangan' => $sl_tunjangans->title_tunjangan,
+									'jumlah_tunjangan' => $sl_tunjangans->jumlah_tunjangan,
+									'is_tunjangan_kena_pajak' => $sl_tunjangans->is_tunjangan_kena_pajak,
+									'jumlah_option' => $sl_tunjangans->jumlah_option,
 									'created_at' => date('d-m-Y h:i:s')
 								);
-								$_tunjanagan_data = $this->Payroll_model->add_gaji_slipgaji_tunjanagans($tunjanagan_data);
+								$_tunjangan_data = $this->Payroll_model->add_gaji_slipgaji_tunjangans($tunjangan_data);
 							}
 						}
 
@@ -1888,15 +1888,15 @@ class Payroll extends MY_Controller {
 						$department_id = 1;	
 					}
 
-					$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($user_id);
-					$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($user_id);
-					$jumlah_tunjanagan = 0;
-					if($count_tunjanagans > 0) {
-						foreach($gaji_tunjanagans as $sl_tunjanagans){
-							$jumlah_tunjanagan += $sl_tunjanagans->jumlah_tunjanagan;
+					$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($user_id);
+					$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($user_id);
+					$jumlah_tunjangan = 0;
+					if($count_tunjangans > 0) {
+						foreach($gaji_tunjangans as $sl_tunjangans){
+							$jumlah_tunjangan += $sl_tunjangans->jumlah_tunjangan;
 						}
 					} else {
-						$jumlah_tunjanagan = 0;
+						$jumlah_tunjangan = 0;
 					}
 
 					$gaji_pinjaman_potongan = $this->Karyawans_model->read_gaji_pinjaman_potongans($user_id);
@@ -1954,7 +1954,7 @@ class Payroll extends MY_Controller {
 						}
 					endif;
 
-					$add_gaji = $jumlah_tunjanagan + $gaji_pokok + $jumlah_lembur + $jumlah_pembayarans_lainnya + $jumlah_komissi;
+					$add_gaji = $jumlah_tunjangan + $gaji_pokok + $jumlah_lembur + $jumlah_pembayarans_lainnya + $jumlah_komissi;
 
 					$gaji_bersih_default = $add_gaji - $jumlah_ptng_pinjaman - $jumlah_statutory_potongans;
 					$gaji_bersih = $gaji_bersih_default;
@@ -1969,7 +1969,7 @@ class Payroll extends MY_Controller {
 						'gaji_pokok' => $gaji_pokok,
 						'gaji_bersih' => $gaji_bersih,
 						'type_upahh' => $krywnid->type_upahh,
-						'total_tunjanagans' => $jumlah_tunjanagan,
+						'total_tunjangans' => $jumlah_tunjangan,
 						'total_pinjaman' => $jumlah_ptng_pinjaman,
 						'total_lembur' => $jumlah_lembur,
 						'total_komissi' => $jumlah_komissi,
@@ -2008,22 +2008,22 @@ class Payroll extends MY_Controller {
 						);
 						$this->Keuangan_model->update_record_bankcash($data3,$online_payment_account);
 
-						$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($user_id);
-						$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($user_id);
-						$jumlah_tunjanagan = 0;
-						if($count_tunjanagans > 0) {
-							foreach($gaji_tunjanagans as $sl_tunjanagans){
-								$tunjanagan_data = array(
+						$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($user_id);
+						$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($user_id);
+						$jumlah_tunjangan = 0;
+						if($count_tunjangans > 0) {
+							foreach($gaji_tunjangans as $sl_tunjangans){
+								$tunjangan_data = array(
 									'slipgaji_id' => $result,
 									'karyawan_id' => $user_id,
 									'gaji_bulan' => $this->input->post('month_year'),
-									'title_tunjanagan' => $sl_tunjanagans->title_tunjanagan,
-									'jumlah_tunjanagan' => $sl_tunjanagans->jumlah_tunjanagan,
-									'is_tunjanagan_kena_pajak' => $sl_tunjanagans->is_tunjanagan_kena_pajak,
-									'jumlah_option' => $sl_tunjanagans->jumlah_option,
+									'title_tunjangan' => $sl_tunjangans->title_tunjangan,
+									'jumlah_tunjangan' => $sl_tunjangans->jumlah_tunjangan,
+									'is_tunjangan_kena_pajak' => $sl_tunjangans->is_tunjangan_kena_pajak,
+									'jumlah_option' => $sl_tunjangans->jumlah_option,
 									'created_at' => date('d-m-Y h:i:s')
 								);
-								$_tunjanagan_data = $this->Payroll_model->add_gaji_slipgaji_tunjanagans($tunjanagan_data);
+								$_tunjangan_data = $this->Payroll_model->add_gaji_slipgaji_tunjangans($tunjangan_data);
 							}
 						}
 
@@ -2330,7 +2330,7 @@ class Payroll extends MY_Controller {
 			'gaji_pokok' => $result[0]->gaji_pokok,
 			'upahh_harian' => $result[0]->upahh_harian,
 			'payment_method' => $p_method,				
-			'total_tunjanagans' => $result[0]->total_tunjanagans,
+			'total_tunjangans' => $result[0]->total_tunjangans,
 			'total_pinjaman' => $result[0]->total_pinjaman,
 			'total_lembur' => $result[0]->total_lembur,
 			'total_komissi' => $result[0]->total_komissi,
@@ -2508,8 +2508,8 @@ class Payroll extends MY_Controller {
 		$bs=0;
 		$bs = $payment[0]->gaji_pokok;
 
-		$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans_slipgaji($payment[0]->slipgaji_id);
-		$tunjanagans = $this->Karyawans_model->set_tunjanagans_karyawan_slipgaji($payment[0]->slipgaji_id);
+		$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans_slipgaji($payment[0]->slipgaji_id);
+		$tunjangans = $this->Karyawans_model->set_tunjangans_karyawan_slipgaji($payment[0]->slipgaji_id);
 
 		$count_komissi = $this->Karyawans_model->count_karyawan_komissi_slipgaji($payment[0]->slipgaji_id);
 		$komissi = $this->Karyawans_model->set_komissi_karyawan_slipgaji($payment[0]->slipgaji_id);
@@ -2527,7 +2527,7 @@ class Payroll extends MY_Controller {
 		$loan = $this->Karyawans_model->set_potongans_karyawan_slipgaji($payment[0]->slipgaji_id);
 
 		$jumlah_statutory_potongan = 0; $jumlah_ptng_pinjaman = 0;
-		$jumlah_tunjanagan = 0; $dejumlah_tunjanagan = 0; $add_potongan_tunjanagan = 0;
+		$jumlah_tunjangan = 0; $dejumlah_tunjangan = 0; $add_potongan_tunjangan = 0;
 		$jumlah_komissi = 0; $dejumlah_komissi = 0; $add_deduct_jumlah_komissi = 0;
 		$jumlah_pembayarans_lainnya = 0; $dejumlah_pembayarans_lainnya = 0; $add_deduct_jumlah_pembayarans_lainnya = 0;
 		$jumlah_lembur = 0;
@@ -2781,62 +2781,62 @@ class Payroll extends MY_Controller {
 			</tr>';
 		}			
 
-		if($count_tunjanagans > 0) {
-			foreach($tunjanagans->result() as $sl_tunjanagans) {
-				if($sl_tunjanagans->jumlah_option==0){
-					$jumlah_tunjanagan_opt = $this->lang->line('umb_title_fixed_pajak');
+		if($count_tunjangans > 0) {
+			foreach($tunjangans->result() as $sl_tunjangans) {
+				if($sl_tunjangans->jumlah_option==0){
+					$jumlah_tunjangan_opt = $this->lang->line('umb_title_fixed_pajak');
 				} else {
-					$jumlah_tunjanagan_opt = $this->lang->line('umb_title_percent_pajak');
+					$jumlah_tunjangan_opt = $this->lang->line('umb_title_percent_pajak');
 				}
-				if($sl_tunjanagans->is_tunjanagan_kena_pajak==0){
-					$tunjanagan_opt = $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');
-				} else if($sl_tunjanagans->is_tunjanagan_kena_pajak==1){
-					$tunjanagan_opt = $this->lang->line('umb_fully_kena_pajak');
+				if($sl_tunjangans->is_tunjangan_kena_pajak==0){
+					$tunjangan_opt = $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');
+				} else if($sl_tunjangans->is_tunjangan_kena_pajak==1){
+					$tunjangan_opt = $this->lang->line('umb_fully_kena_pajak');
 				} else {
-					$tunjanagan_opt = $this->lang->line('umb_partially_kena_pajak');
+					$tunjangan_opt = $this->lang->line('umb_partially_kena_pajak');
 				}
-				if($sl_tunjanagans->is_tunjanagan_kena_pajak == 1) {
-					if($sl_tunjanagans->jumlah_option == 0) {
-						$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+				if($sl_tunjangans->is_tunjangan_kena_pajak == 1) {
+					if($sl_tunjangans->jumlah_option == 0) {
+						$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 					} else {
-						$ijumlah_tunjanagan = $bs / 100 * $sl_tunjanagans->jumlah_tunjanagan;
+						$ijumlah_tunjangan = $bs / 100 * $sl_tunjangans->jumlah_tunjangan;
 					}
-					$jumlah_tunjanagan += 0;
-					$dejumlah_tunjanagan -= $ijumlah_tunjanagan;
-					$add_potongan_tunjanagan += $ijumlah_tunjanagan;
+					$jumlah_tunjangan += 0;
+					$dejumlah_tunjangan -= $ijumlah_tunjangan;
+					$add_potongan_tunjangan += $ijumlah_tunjangan;
 					$tblbrk .= '<tr>
-					<td colspan="2">'.$sl_tunjanagans->title_tunjanagan.' ('.$jumlah_tunjanagan_opt.') ('.$tunjanagan_opt.')</td>
+					<td colspan="2">'.$sl_tunjangans->title_tunjangan.' ('.$jumlah_tunjangan_opt.') ('.$tunjangan_opt.')</td>
 
 					<td>&nbsp;</td>			
-					<td align="center">'.$this->Umb_model->currency_sign($ijumlah_tunjanagan).'</td>		
+					<td align="center">'.$this->Umb_model->currency_sign($ijumlah_tunjangan).'</td>		
 					</tr>';
-				} else if($sl_tunjanagans->is_tunjanagan_kena_pajak == 2) {
-					if($sl_tunjanagans->jumlah_option == 0) {
-						$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan / 2;
+				} else if($sl_tunjangans->is_tunjangan_kena_pajak == 2) {
+					if($sl_tunjangans->jumlah_option == 0) {
+						$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan / 2;
 					} else {
-						$ijumlah_tunjanagan = ($bs / 100) / 2 * $sl_tunjanagans->jumlah_tunjanagan;
+						$ijumlah_tunjangan = ($bs / 100) / 2 * $sl_tunjangans->jumlah_tunjangan;
 					}
-					$jumlah_tunjanagan += 0;
-					$dejumlah_tunjanagan -= $ijumlah_tunjanagan;
-					$add_potongan_tunjanagan += $ijumlah_tunjanagan;
+					$jumlah_tunjangan += 0;
+					$dejumlah_tunjangan -= $ijumlah_tunjangan;
+					$add_potongan_tunjangan += $ijumlah_tunjangan;
 					$tblbrk .= '<tr>
-					<td colspan="2">'.$sl_tunjanagans->title_tunjanagan.' ('.$jumlah_tunjanagan_opt.') ('.$tunjanagan_opt.')</td>
+					<td colspan="2">'.$sl_tunjangans->title_tunjangan.' ('.$jumlah_tunjangan_opt.') ('.$tunjangan_opt.')</td>
 
 					<td>&nbsp;</td>			
-					<td align="center">'.$this->Umb_model->currency_sign($ijumlah_tunjanagan).'</td>		
+					<td align="center">'.$this->Umb_model->currency_sign($ijumlah_tunjangan).'</td>		
 					</tr>';
 				} else {
-					if($sl_tunjanagans->jumlah_option == 0) {
-						$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+					if($sl_tunjangans->jumlah_option == 0) {
+						$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 					} else {
-						$ijumlah_tunjanagan = $bs / 100 * $sl_tunjanagans->jumlah_tunjanagan;
+						$ijumlah_tunjangan = $bs / 100 * $sl_tunjangans->jumlah_tunjangan;
 					}
-					$jumlah_tunjanagan += $ijumlah_tunjanagan; 
-					$dejumlah_tunjanagan += 0;
-					$add_potongan_tunjanagan += 0;
+					$jumlah_tunjangan += $ijumlah_tunjangan; 
+					$dejumlah_tunjangan += 0;
+					$add_potongan_tunjangan += 0;
 					$tblbrk .= '<tr>
-					<td colspan="2">'.$sl_tunjanagans->title_tunjanagan.' ('.$jumlah_tunjanagan_opt.') ('.$tunjanagan_opt.')</td>
-					<td align="center">'.$this->Umb_model->currency_sign($ijumlah_tunjanagan).'</td>	
+					<td colspan="2">'.$sl_tunjangans->title_tunjangan.' ('.$jumlah_tunjangan_opt.') ('.$tunjangan_opt.')</td>
+					<td align="center">'.$this->Umb_model->currency_sign($ijumlah_tunjangan).'</td>	
 					<td>&nbsp;</td>				
 					</tr>';
 				}
@@ -2851,7 +2851,7 @@ class Payroll extends MY_Controller {
 					$opt_jumlah_komisi = $this->lang->line('umb_title_percent_pajak');
 				}
 				if($sl_komissi->is_komisi_kena_pajak==0){
-					$opt_komisi = $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');
+					$opt_komisi = $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');
 				} else if($sl_komissi->is_komisi_kena_pajak==1){
 					$opt_komisi = $this->lang->line('umb_fully_kena_pajak');
 				} else {
@@ -2913,7 +2913,7 @@ class Payroll extends MY_Controller {
 					$opt_jumlah_lainnya = $this->lang->line('umb_title_percent_pajak');
 				}
 				if($sl_pembayarans_lainnya->ia_pembayaranlainnya_kena_pajak==0){
-					$other_opt = $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');
+					$other_opt = $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');
 				} else if($sl_pembayarans_lainnya->ia_pembayaranlainnya_kena_pajak==1){
 					$other_opt = $this->lang->line('umb_fully_kena_pajak');
 				} else {
@@ -3018,8 +3018,8 @@ class Payroll extends MY_Controller {
 		}
 		if($payment[0]->type_slipgaji=='perjam'){
 			$etotal_count = $hcount * $bs;
-			$total_earning = $etotal_count + $jumlah_tunjanagan + $jumlah_lembur + $jumlah_komissi + $jumlah_pembayarans_lainnya;
-			$total_potongan = $jumlah_ptng_pinjaman + $jumlah_statutory_potongan + $add_deduct_jumlah_pembayarans_lainnya + $add_deduct_jumlah_komissi + $add_potongan_tunjanagan + $advance_gaji_tkn;
+			$total_earning = $etotal_count + $jumlah_tunjangan + $jumlah_lembur + $jumlah_komissi + $jumlah_pembayarans_lainnya;
+			$total_potongan = $jumlah_ptng_pinjaman + $jumlah_statutory_potongan + $add_deduct_jumlah_pembayarans_lainnya + $add_deduct_jumlah_komissi + $add_potongan_tunjangan + $advance_gaji_tkn;
 
 			$total_gaji_bersih = $total_earning - $total_potongan;
 			$etotal_earning = $total_earning;
@@ -3037,8 +3037,8 @@ class Payroll extends MY_Controller {
 			<td colspan="2" align="center"><strong>'.$this->Umb_model->currency_sign($fgaji).'</strong></td>
 			</tr></table>';
 		} else {
-			$total_earning = $bs + $jumlah_tunjanagan + $jumlah_lembur + $jumlah_komissi + $jumlah_pembayarans_lainnya;
-			$total_potongan = $jumlah_ptng_pinjaman + $jumlah_statutory_potongan + $add_deduct_jumlah_pembayarans_lainnya + $add_deduct_jumlah_komissi + $add_potongan_tunjanagan + $advance_gaji_tkn;
+			$total_earning = $bs + $jumlah_tunjangan + $jumlah_lembur + $jumlah_komissi + $jumlah_pembayarans_lainnya;
+			$total_potongan = $jumlah_ptng_pinjaman + $jumlah_statutory_potongan + $add_deduct_jumlah_pembayarans_lainnya + $add_deduct_jumlah_komissi + $add_potongan_tunjangan + $advance_gaji_tkn;
 			$total_gaji_bersih = $total_earning - $total_potongan;
 			$tblbrk .= '
 			<tr><td colspan="2" align="center"><strong>Total</strong></td>
@@ -3200,8 +3200,8 @@ class Payroll extends MY_Controller {
 		} else {
 			$bs = $payment[0]->upahh_harian;
 		}
-		$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans_slipgaji($payment[0]->slipgaji_id);
-		$tunjanagans = $this->Karyawans_model->set_tunjanagans_karyawan_slipgaji($payment[0]->slipgaji_id);
+		$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans_slipgaji($payment[0]->slipgaji_id);
+		$tunjangans = $this->Karyawans_model->set_tunjangans_karyawan_slipgaji($payment[0]->slipgaji_id);
 		$count_komissi = $this->Karyawans_model->count_karyawan_komissi_slipgaji($payment[0]->slipgaji_id);
 		$komissi = $this->Karyawans_model->set_komissi_karyawan_slipgaji($payment[0]->slipgaji_id);
 		$count_pembayarans_lainnya = $this->Karyawans_model->count_karyawan_pembayarans_lainnya_slipgaji($payment[0]->slipgaji_id);
@@ -3212,7 +3212,7 @@ class Payroll extends MY_Controller {
 		$lembur = $this->Karyawans_model->set_karyawan_lembur_slipgaji($payment[0]->slipgaji_id);
 		$count_pinjaman = $this->Karyawans_model->count_karyawan_potongans_slipgaji($payment[0]->slipgaji_id);
 		$loan = $this->Karyawans_model->set_potongans_karyawan_slipgaji($payment[0]->slipgaji_id);
-		$jumlah_statutory_potongan = 0; $jumlah_ptng_pinjaman = 0; $jumlah_tunjanagans = 0;
+		$jumlah_statutory_potongan = 0; $jumlah_ptng_pinjaman = 0; $jumlah_tunjangans = 0;
 		$jumlah_komissi = 0; $jumlah_pembayarans_lainnya = 0; $jumlah_lembur = 0;		
 		if($count_pinjaman > 0):
 			foreach($loan->result() as $r_pinjaman) {
@@ -3222,8 +3222,8 @@ class Payroll extends MY_Controller {
 		else:
 			$jumlah_ptng_pinjaman = 0;
 		endif;
-		$jumlah_tunjanagans = 0; foreach($tunjanagans->result() as $sl_tunjanagans) {
-			$jumlah_tunjanagans += $sl_tunjanagans->jumlah_tunjanagan;
+		$jumlah_tunjangans = 0; foreach($tunjangans->result() as $sl_tunjangans) {
+			$jumlah_tunjangans += $sl_tunjangans->jumlah_tunjangan;
 		}
 		$jumlah_komissi = 0; foreach($komissi->result() as $sl_komissi) {
 			$jumlah_komissi += $sl_komissi->jumlah_komisi;
@@ -3288,7 +3288,7 @@ class Payroll extends MY_Controller {
 		</table>
 		';
 		$pdf->writeHTML($tbl1, true, false, true, false, '');
-		$total_earning = $bs + $jumlah_tunjanagans + $jumlah_komissi + $jumlah_pembayarans_lainnya + $jumlah_lembur;	
+		$total_earning = $bs + $jumlah_tunjangans + $jumlah_komissi + $jumlah_pembayarans_lainnya + $jumlah_lembur;	
 		$total_potongans = $jumlah_ptng_pinjaman + $jumlah_statutory_potongan;
 		$pdf->Ln(7);
 		$tblc = '<table cellpadding="3" cellspacing="0" border="1"><tr>
@@ -3323,11 +3323,11 @@ class Payroll extends MY_Controller {
 				<td align="right">'.$this->Umb_model->currency_sign($payment[0]->upahh_harian).'</td>
 				</tr>';
 			}
-			if($payment[0]->total_tunjanagans!=0 || $payment[0]->total_tunjanagans!=''):
+			if($payment[0]->total_tunjangans!=0 || $payment[0]->total_tunjangans!=''):
 				$tbl2 .= '<tr>
 				<td colspan="2">&nbsp;</td>
-				<td>'.$this->lang->line('umb_payroll_total_tunjanagan').'</td>
-				<td align="right">'.$this->Umb_model->currency_sign($payment[0]->total_tunjanagans).'</td>
+				<td>'.$this->lang->line('umb_payroll_total_tunjangan').'</td>
+				<td align="right">'.$this->Umb_model->currency_sign($payment[0]->total_tunjangans).'</td>
 				</tr>';
 			endif;
 			if($payment[0]->total_komissi!=0 || $payment[0]->total_komissi!=''):
@@ -3370,7 +3370,7 @@ class Payroll extends MY_Controller {
 			} else {
 				$bs = $payment[0]->upahh_harian;
 			}*/
-			$total_earning = $bs + $jumlah_tunjanagans + $jumlah_lembur + $jumlah_komissi + $jumlah_pembayarans_lainnya;
+			$total_earning = $bs + $jumlah_tunjangans + $jumlah_lembur + $jumlah_komissi + $jumlah_pembayarans_lainnya;
 			$total_potongan = $jumlah_ptng_pinjaman + $jumlah_statutory_potongan;
 			$total_gaji_bersih = $total_earning - $total_potongan;
 			$tbl2 .= '<tr>
@@ -3471,7 +3471,7 @@ class Payroll extends MY_Controller {
 			'security_deposit' => $result[0]->security_deposit,
 			'potongan_pajak' => $result[0]->potongan_pajak,
 			'gross_gaji' => $result[0]->gross_gaji,
-			'total_tunjanagans' => $result[0]->total_tunjanagans,
+			'total_tunjangans' => $result[0]->total_tunjangans,
 			'total_potongans' => $result[0]->total_potongans,
 			'gaji_bersih' => $result[0]->gaji_bersih,
 			'jumlah_pembayaran' => $result[0]->jumlah_pembayaran,
@@ -3497,7 +3497,7 @@ class Payroll extends MY_Controller {
 		$Return['csrf_hash'] = $this->security->get_csrf_hash();
 		$result = $this->Payroll_model->delete_record($id);
 		if(isset($id)) {
-			$this->Payroll_model->delete_slipgaji_tunjanagans_items($id);
+			$this->Payroll_model->delete_slipgaji_tunjangans_items($id);
 			$this->Payroll_model->delete_slipgaji_komissi_items($id);
 			$this->Payroll_model->delete_slipgaji_pembayaran_lainnya_items($id);
 			$this->Payroll_model->delete_slipgaji_statutory_potongans_items($id);
@@ -3521,7 +3521,7 @@ class Payroll extends MY_Controller {
 		$id = $id;
 		$Return['csrf_hash'] = $this->security->get_csrf_hash();
 		$this->Payroll_model->delete_record($id);
-		$this->Payroll_model->delete_slipgaji_tunjanagans_items($id);
+		$this->Payroll_model->delete_slipgaji_tunjangans_items($id);
 		$this->Payroll_model->delete_slipgaji_komissi_items($id);
 		$this->Payroll_model->delete_slipgaji_pembayaran_lainnya_items($id);
 		$this->Payroll_model->delete_slipgaji_statutory_potongans_items($id);

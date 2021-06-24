@@ -12,17 +12,17 @@ if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='payroll_
 if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='payroll_template' && $_GET['type']=='payroll_template'){ ?>
 	<?php
 	$system = $this->Umb_model->read_setting_info(1);
-	$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($karyawan_id);
-	$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($karyawan_id);
-	$jumlah_tunjanagan = 0;
-	if($count_tunjanagans > 0) {
-		foreach($gaji_tunjanagans as $sl_tunjanagans){
-			$jumlah_tunjanagan += $sl_tunjanagans->jumlah_tunjanagan;
+	$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($karyawan_id);
+	$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($karyawan_id);
+	$jumlah_tunjangan = 0;
+	if($count_tunjangans > 0) {
+		foreach($gaji_tunjangans as $sl_tunjangans){
+			$jumlah_tunjangan += $sl_tunjangans->jumlah_tunjangan;
 		}
 	} else {
-		$jumlah_tunjanagan = 0;
+		$jumlah_tunjangan = 0;
 	}
-	$sta_gaji = $jumlah_tunjanagan + $gaji_pokok;
+	$sta_gaji = $jumlah_tunjangan + $gaji_pokok;
 	?>
 	<?php
 	if($profile_picture!='' && $profile_picture!='no file') {
@@ -86,71 +86,71 @@ if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='payroll_
 								</div>
 							</div>
 						</div>
-						<?php $tunjanagans = $this->Karyawans_model->set_tunjanagans_karyawan($user_id);?>
-						<?php if(!is_null($tunjanagans)):?>
+						<?php $tunjangans = $this->Karyawans_model->set_tunjangans_karyawan($user_id);?>
+						<?php if(!is_null($tunjangans)):?>
 							<div class="card hrastral-slipgaji">
-								<div class="card-header"> <a class="text-dark collapsed" data-toggle="collapse" href="#set_tunjanagans" aria-expanded="false"> <strong><?php echo $this->lang->line('umb_karyawan_set_tunjanagans');?></strong> </a> </div>
-								<div id="set_tunjanagans" class="collapse" data-parent="#accordion" style="">
+								<div class="card-header"> <a class="text-dark collapsed" data-toggle="collapse" href="#set_tunjangans" aria-expanded="false"> <strong><?php echo $this->lang->line('umb_karyawan_set_tunjangans');?></strong> </a> </div>
+								<div id="set_tunjangans" class="collapse" data-parent="#accordion" style="">
 									<div class="box-body ml-3 mr-3">
 										<div class="table-responsive" data-pattern="priority-columns">
 											<table class="datatables-demo table table-striped table-bordered dataTable no-footer">
 												<tbody>
-													<?php $jumlah_tunjanagan = 0; foreach($tunjanagans->result() as $sl_tunjanagans) { ?>
+													<?php $jumlah_tunjangan = 0; foreach($tunjangans->result() as $sl_tunjangans) { ?>
 														<?php 
-														$pg_jumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
-														if($sl_tunjanagans->jumlah_option==0){
-															$jumlah_tunjanagan_opt = $this->lang->line('umb_title_fixed_pajak');
+														$pg_jumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
+														if($sl_tunjangans->jumlah_option==0){
+															$jumlah_tunjangan_opt = $this->lang->line('umb_title_fixed_pajak');
 														} else {
-															$jumlah_tunjanagan_opt = $this->lang->line('umb_title_percent_pajak');
+															$jumlah_tunjangan_opt = $this->lang->line('umb_title_percent_pajak');
 														}
-														if($sl_tunjanagans->is_tunjanagan_kena_pajak==0){
-															$tunjanagan_opt = $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');
-														} else if($sl_tunjanagans->is_tunjanagan_kena_pajak==1){
-															$tunjanagan_opt = $this->lang->line('umb_fully_kena_pajak');
+														if($sl_tunjangans->is_tunjangan_kena_pajak==0){
+															$tunjangan_opt = $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');
+														} else if($sl_tunjangans->is_tunjangan_kena_pajak==1){
+															$tunjangan_opt = $this->lang->line('umb_fully_kena_pajak');
 														} else {
-															$tunjanagan_opt = $this->lang->line('umb_partially_kena_pajak');
+															$tunjangan_opt = $this->lang->line('umb_partially_kena_pajak');
 														}
 														if($system[0]->is_half_monthly==1){
 															if($system[0]->potong_setengah_bulan==2){
-																$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan/2;
+																$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan/2;
 															} else {
-																$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+																$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 															}
-															$jumlah_tunjanagan += $ijumlah_tunjanagan;
+															$jumlah_tunjangan += $ijumlah_tunjangan;
 														} else {
-						  //$ejumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
-															if($sl_tunjanagans->is_tunjanagan_kena_pajak == 1) {
-																if($sl_tunjanagans->jumlah_option == 0) {
-																	$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+						  //$ejumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
+															if($sl_tunjangans->is_tunjangan_kena_pajak == 1) {
+																if($sl_tunjangans->jumlah_option == 0) {
+																	$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 																} else {
-																	$ijumlah_tunjanagan = $gaji_pokok / 100 * $sl_tunjanagans->jumlah_tunjanagan;
+																	$ijumlah_tunjangan = $gaji_pokok / 100 * $sl_tunjangans->jumlah_tunjangan;
 																}
-																$jumlah_tunjanagan -= $ijumlah_tunjanagan; 
-															} else if($sl_tunjanagans->is_tunjanagan_kena_pajak == 2) {
-																if($sl_tunjanagans->jumlah_option == 0) {
-																	$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan / 2;
+																$jumlah_tunjangan -= $ijumlah_tunjangan; 
+															} else if($sl_tunjangans->is_tunjangan_kena_pajak == 2) {
+																if($sl_tunjangans->jumlah_option == 0) {
+																	$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan / 2;
 																} else {
-																	$ijumlah_tunjanagan = ($gaji_pokok / 100) / 2 * $sl_tunjanagans->jumlah_tunjanagan;
+																	$ijumlah_tunjangan = ($gaji_pokok / 100) / 2 * $sl_tunjangans->jumlah_tunjangan;
 																}
-																$jumlah_tunjanagan -= $ijumlah_tunjanagan; 
+																$jumlah_tunjangan -= $ijumlah_tunjangan; 
 															} else {
-																if($sl_tunjanagans->jumlah_option == 0) {
-																	$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+																if($sl_tunjangans->jumlah_option == 0) {
+																	$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 																} else {
-																	$ijumlah_tunjanagan = $gaji_pokok / 100 * $sl_tunjanagans->jumlah_tunjanagan;
+																	$ijumlah_tunjangan = $gaji_pokok / 100 * $sl_tunjangans->jumlah_tunjangan;
 																}
-																$jumlah_tunjanagan += $ijumlah_tunjanagan;
+																$jumlah_tunjangan += $ijumlah_tunjangan;
 															}
 														}
 														
-					 // $jumlah_tunjanagan += $ejumlah_tunjanagan;
+					 // $jumlah_tunjangan += $ejumlah_tunjangan;
 														?>
 														<tr>
-															<td><strong><?php echo $sl_tunjanagans->title_tunjanagan;?> (<?php echo $jumlah_tunjanagan_opt;?>) (<?php echo $tunjanagan_opt;?>):</strong> <span class="pull-right"><?php echo $this->Umb_model->currency_sign($jumlah_tunjanagan);?></span></td>
+															<td><strong><?php echo $sl_tunjangans->title_tunjangan;?> (<?php echo $jumlah_tunjangan_opt;?>) (<?php echo $tunjangan_opt;?>):</strong> <span class="pull-right"><?php echo $this->Umb_model->currency_sign($jumlah_tunjangan);?></span></td>
 														</tr>
 													<?php } ?>
 													<tr>
-														<td><strong><?php echo $this->lang->line('umb_acc_total');?>:</strong> <span class="pull-right"><?php echo $this->Umb_model->currency_sign($jumlah_tunjanagan);?></span></td>
+														<td><strong><?php echo $this->lang->line('umb_acc_total');?>:</strong> <span class="pull-right"><?php echo $this->Umb_model->currency_sign($jumlah_tunjangan);?></span></td>
 													</tr>
 												</tbody>
 											</table>
@@ -209,7 +209,7 @@ if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='payroll_
 															$opt_jumlah_komisi = $this->lang->line('umb_title_percent_pajak');
 														}
 														if($sl_komissi->is_komisi_kena_pajak==0){
-															$opt_komisi = $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');
+															$opt_komisi = $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');
 														} else if($sl_komissi->is_komisi_kena_pajak==1){
 															$opt_komisi = $this->lang->line('umb_fully_kena_pajak');
 														} else {
@@ -332,7 +332,7 @@ if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='payroll_
 															$opt_jumlah_lainnya = $this->lang->line('umb_title_percent_pajak');
 														}
 														if($sl_pembayarans_lainnya->ia_pembayaranlainnya_kena_pajak==0){
-															$other_opt = $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');
+															$other_opt = $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');
 														} else if($sl_pembayarans_lainnya->ia_pembayaranlainnya_kena_pajak==1){
 															$other_opt = $this->lang->line('umb_fully_kena_pajak');
 														} else {
@@ -462,17 +462,17 @@ if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='payroll_
 	<?php } else if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='slipgaji_perjam' && $_GET['type']=='read_hourly_payment'){ ?>
 		<?php
 		$system = $this->Umb_model->read_setting_info(1);
-		$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($karyawan_id);
-		$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($karyawan_id);
-		$jumlah_tunjanagan = 0;
-		if($count_tunjanagans > 0) {
-			foreach($gaji_tunjanagans as $sl_tunjanagans){
-				$jumlah_tunjanagan += $sl_tunjanagans->jumlah_tunjanagan;
+		$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($karyawan_id);
+		$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($karyawan_id);
+		$jumlah_tunjangan = 0;
+		if($count_tunjangans > 0) {
+			foreach($gaji_tunjangans as $sl_tunjangans){
+				$jumlah_tunjangan += $sl_tunjangans->jumlah_tunjangan;
 			}
 		} else {
-			$jumlah_tunjanagan = 0;
+			$jumlah_tunjangan = 0;
 		}
-		$sta_gaji = $jumlah_tunjanagan + $gaji_pokok;
+		$sta_gaji = $jumlah_tunjangan + $gaji_pokok;
 		?>
 		<?php
 		if($profile_picture!='' && $profile_picture!='no file') {
@@ -589,23 +589,23 @@ if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='payroll_
 									</div>
 								</div>
 							</div>
-							<?php $tunjanagans = $this->Karyawans_model->set_tunjanagans_karyawan($user_id);?>
-							<?php if(!is_null($tunjanagans)):?>
+							<?php $tunjangans = $this->Karyawans_model->set_tunjangans_karyawan($user_id);?>
+							<?php if(!is_null($tunjangans)):?>
 								<div class="card hrastral-slipgaji">
-									<div class="card-header"> <a class="text-dark collapsed" data-toggle="collapse" href="#set_tunjanagans" aria-expanded="false"> <strong><?php echo $this->lang->line('umb_karyawan_set_tunjanagans');?></strong> </a> </div>
-									<div id="set_tunjanagans" class="collapse" data-parent="#accordion" style="">
+									<div class="card-header"> <a class="text-dark collapsed" data-toggle="collapse" href="#set_tunjangans" aria-expanded="false"> <strong><?php echo $this->lang->line('umb_karyawan_set_tunjangans');?></strong> </a> </div>
+									<div id="set_tunjangans" class="collapse" data-parent="#accordion" style="">
 										<div class="box-body ml-3 mr-3">
 											<div class="table-responsive" data-pattern="priority-columns">
 												<table class="datatables-demo table table-striped table-bordered dataTable no-footer">
 													<tbody>
-														<?php $jumlah_tunjanagan = 0; foreach($tunjanagans->result() as $sl_tunjanagans) { ?>
-															<?php $jumlah_tunjanagan += $sl_tunjanagans->jumlah_tunjanagan;?>
+														<?php $jumlah_tunjangan = 0; foreach($tunjangans->result() as $sl_tunjangans) { ?>
+															<?php $jumlah_tunjangan += $sl_tunjangans->jumlah_tunjangan;?>
 															<tr>
-																<td><strong><?php echo $sl_tunjanagans->title_tunjanagan;?>:</strong> <span class="pull-right"><?php echo $this->Umb_model->currency_sign($sl_tunjanagans->jumlah_tunjanagan);?></span></td>
+																<td><strong><?php echo $sl_tunjangans->title_tunjangan;?>:</strong> <span class="pull-right"><?php echo $this->Umb_model->currency_sign($sl_tunjangans->jumlah_tunjangan);?></span></td>
 															</tr>
 														<?php } ?>
 														<tr>
-															<td><strong><?php echo $this->lang->line('umb_acc_total');?>:</strong> <span class="pull-right"><?php echo $this->Umb_model->currency_sign($jumlah_tunjanagan);?></span></td>
+															<td><strong><?php echo $this->lang->line('umb_acc_total');?>:</strong> <span class="pull-right"><?php echo $this->Umb_model->currency_sign($jumlah_tunjangan);?></span></td>
 														</tr>
 													</tbody>
 												</table>

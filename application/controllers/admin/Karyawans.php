@@ -1821,7 +1821,7 @@ class Karyawans extends MY_Controller {
 		}
 	}
 	
-	public function dialog_gaji_tunjanagan() {
+	public function dialog_gaji_tunjangan() {
 		
 		$session = $this->session->userdata('username');
 		if(empty($session)){ 
@@ -1829,14 +1829,14 @@ class Karyawans extends MY_Controller {
 		}
 		$data['title'] = $this->Umb_model->site_title();
 		$id = $this->input->get('field_id');
-		$result = $this->Karyawans_model->read_single_gaji_tunjanagan($id);
+		$result = $this->Karyawans_model->read_single_gaji_tunjangan($id);
 		$data = array(
-			'tunjanagan_id' => $result[0]->tunjanagan_id,
+			'tunjangan_id' => $result[0]->tunjangan_id,
 			'karyawan_id' => $result[0]->karyawan_id,
-			'is_tunjanagan_kena_pajak' => $result[0]->is_tunjanagan_kena_pajak,
+			'is_tunjangan_kena_pajak' => $result[0]->is_tunjangan_kena_pajak,
 			'jumlah_option' => $result[0]->jumlah_option,
-			'title_tunjanagan' => $result[0]->title_tunjanagan,
-			'jumlah_tunjanagan' => $result[0]->jumlah_tunjanagan
+			'title_tunjangan' => $result[0]->title_tunjangan,
+			'jumlah_tunjangan' => $result[0]->jumlah_tunjangan
 		);
 		if(!empty($session)){ 
 			$this->load->view('admin/karyawans/dialog_details_karyawan', $data);
@@ -3943,18 +3943,18 @@ class Karyawans extends MY_Controller {
 		}
 	}
 
-	public function info_update_tunjanagan() {
+	public function info_update_tunjangan() {
 
-		if($this->input->post('type')=='e_info_tunjanagan') {		
+		if($this->input->post('type')=='e_info_tunjangan') {		
 
 			$Return = array('result'=>'', 'error'=>'', 'csrf_hash'=>'');
 			$Return['csrf_hash'] = $this->security->get_csrf_hash();
 
 
-			if($this->input->post('title_tunjanagan')==='') {
-				$Return['error'] = $this->lang->line('umb_karyawan_set_title_tunjanagan_error');
-			} else if($this->input->post('jumlah_tunjanagan')==='') {
-				$Return['error'] = $this->lang->line('umb_karyawan_set_jumlah_tunjanagan_error');
+			if($this->input->post('title_tunjangan')==='') {
+				$Return['error'] = $this->lang->line('umb_karyawan_set_title_tunjangan_error');
+			} else if($this->input->post('jumlah_tunjangan')==='') {
+				$Return['error'] = $this->lang->line('umb_karyawan_set_jumlah_tunjangan_error');
 			}
 
 			if($Return['error']!=''){
@@ -3962,15 +3962,15 @@ class Karyawans extends MY_Controller {
 			}
 
 			$data = array(
-				'title_tunjanagan' => $this->input->post('title_tunjanagan'),
-				'jumlah_tunjanagan' => $this->input->post('jumlah_tunjanagan'),
-				'is_tunjanagan_kena_pajak' => $this->input->post('is_tunjanagan_kena_pajak'),
+				'title_tunjangan' => $this->input->post('title_tunjangan'),
+				'jumlah_tunjangan' => $this->input->post('jumlah_tunjangan'),
+				'is_tunjangan_kena_pajak' => $this->input->post('is_tunjangan_kena_pajak'),
 				'jumlah_option' => $this->input->post('jumlah_option')
 			);
 			$e_field_id = $this->input->post('e_field_id');
-			$result = $this->Karyawans_model->update_record_gaji_tunjanagan($data,$e_field_id);
+			$result = $this->Karyawans_model->update_record_gaji_tunjangan($data,$e_field_id);
 			if ($result == TRUE) {
-				$Return['result'] = $this->lang->line('umb_karyawan_diperbarui_tunjanagan_success');
+				$Return['result'] = $this->lang->line('umb_karyawan_diperbarui_tunjangan_success');
 			} else {
 				$Return['error'] = $this->lang->line('umb_error_msg');
 			}
@@ -5062,29 +5062,29 @@ class Karyawans extends MY_Controller {
 
 	public function option_tunjangan_karyawan() {
 
-		if($this->input->post('type')=='karyawan_update_tunjanagan') {		
+		if($this->input->post('type')=='karyawan_update_tunjangan') {		
 
 			$Return = array('result'=>'', 'error'=>'', 'csrf_hash'=>'');
 			$Return['csrf_hash'] = $this->security->get_csrf_hash();	
-			if($this->input->post('title_tunjanagan')==='') {
-				$Return['error'] = $this->lang->line('umb_karyawan_set_title_tunjanagan_error');
-			} else if($this->input->post('jumlah_tunjanagan')==='') {
-				$Return['error'] = $this->lang->line('umb_karyawan_set_jumlah_tunjanagan_error');
+			if($this->input->post('title_tunjangan')==='') {
+				$Return['error'] = $this->lang->line('umb_karyawan_set_title_tunjangan_error');
+			} else if($this->input->post('jumlah_tunjangan')==='') {
+				$Return['error'] = $this->lang->line('umb_karyawan_set_jumlah_tunjangan_error');
 			}
 
 			if($Return['error']!=''){
 				$this->output($Return);
 			}
 			$data = array(
-				'title_tunjanagan' => $this->input->post('title_tunjanagan'),
-				'jumlah_tunjanagan' => $this->input->post('jumlah_tunjanagan'),
+				'title_tunjangan' => $this->input->post('title_tunjangan'),
+				'jumlah_tunjangan' => $this->input->post('jumlah_tunjangan'),
 				'karyawan_id' => $this->input->post('user_id'),
-				'is_tunjanagan_kena_pajak' => $this->input->post('is_tunjanagan_kena_pajak'),
+				'is_tunjangan_kena_pajak' => $this->input->post('is_tunjangan_kena_pajak'),
 				'jumlah_option' => $this->input->post('jumlah_option')
 			);
-			$result = $this->Karyawans_model->add_gaji_tunjanagans($data);
+			$result = $this->Karyawans_model->add_gaji_tunjangans($data);
 			if ($result == TRUE) {
-				$Return['result'] = $this->lang->line('umb_karyawan_set_tunjanagan_success');
+				$Return['result'] = $this->lang->line('umb_karyawan_set_tunjangan_success');
 			} else {
 				$Return['error'] = $this->lang->line('umb_error_msg');
 			}
@@ -5191,16 +5191,16 @@ class Karyawans extends MY_Controller {
 		}
 	}
 
-	public function delete_all_tunjanagans() {
+	public function delete_all_tunjangans() {
 
 		if($this->input->post('data')=='delete_record') {
 
 			$Return = array('result'=>'', 'error'=>'', 'csrf_hash'=>'');
 			$Return['csrf_hash'] = $this->security->get_csrf_hash();
 			$id = $this->uri->segment(4);
-			$result = $this->Karyawans_model->delete_record_tunjanagan($id);
+			$result = $this->Karyawans_model->delete_record_tunjangan($id);
 			if(isset($id)) {
-				$Return['result'] = $this->lang->line('umb_karyawan_delete_tunjanagan_success');
+				$Return['result'] = $this->lang->line('umb_karyawan_delete_tunjangan_success');
 			} else {
 				$Return['error'] = $this->lang->line('umb_error_msg');
 			}
@@ -5293,7 +5293,7 @@ class Karyawans extends MY_Controller {
 		}
 	}
 
-	public function gaji_all_tunjanagans() {
+	public function gaji_all_tunjangans() {
 		//set data
 		$data['title'] = $this->Umb_model->site_title();
 		$session = $this->session->userdata('username');
@@ -5308,7 +5308,7 @@ class Karyawans extends MY_Controller {
 		$length = intval($this->input->get("length"));
 
 		$id = $this->uri->segment(4);
-		$tunjanagans = $this->Karyawans_model->set_tunjanagans_karyawan($id);
+		$tunjangans = $this->Karyawans_model->set_tunjangans_karyawan($id);
 
 		$data = array();
 		/*$system = $this->Umb_model->read_setting_info(1);
@@ -5320,33 +5320,33 @@ class Karyawans extends MY_Controller {
 			$current_rate = 1;
 			$current_title = 'USD';
 		}*/
-		foreach($tunjanagans->result() as $r) {			
-		//$current_jumlah = $r->jumlah_tunjanagan * $current_rate;
+		foreach($tunjangans->result() as $r) {			
+		//$current_jumlah = $r->jumlah_tunjangan * $current_rate;
 			if($r->jumlah_option==0){
-				$jumlah_tunjanagan_opt = $this->lang->line('umb_title_fixed_pajak');
+				$jumlah_tunjangan_opt = $this->lang->line('umb_title_fixed_pajak');
 			} else {
-				$jumlah_tunjanagan_opt = $this->lang->line('umb_title_percent_pajak');
+				$jumlah_tunjangan_opt = $this->lang->line('umb_title_percent_pajak');
 			}
-			if($r->is_tunjanagan_kena_pajak==0){
-				$tunjanagan_opt = $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');
-			} else if($r->is_tunjanagan_kena_pajak==1){
-				$tunjanagan_opt = $this->lang->line('umb_fully_kena_pajak');
+			if($r->is_tunjangan_kena_pajak==0){
+				$tunjangan_opt = $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');
+			} else if($r->is_tunjangan_kena_pajak==1){
+				$tunjangan_opt = $this->lang->line('umb_fully_kena_pajak');
 			} else {
-				$tunjanagan_opt = $this->lang->line('umb_partially_kena_pajak');
+				$tunjangan_opt = $this->lang->line('umb_partially_kena_pajak');
 			}
 			$data[] = array(
-				'<span data-toggle="tooltip" data-placement="top" data-state="primary" title="'.$this->lang->line('umb_edit').'"><button type="button" class="btn icon-btn btn-sm btn-outline-secondary waves-effect waves-light" data-toggle="modal" data-target=".edit-modal-data" data-field_id="'. $r->tunjanagan_id . '" data-field_type="gaji_tunjanagan"><span class="fas fa-pencil-alt"></span></button></span><span data-toggle="tooltip" data-placement="top" data-state="danger" title="'.$this->lang->line('umb_delete').'"><button type="button" class="btn icon-btn btn-sm btn-outline-danger waves-effect waves-light delete" data-toggle="modal" data-target=".delete-modal" data-record-id="'. $r->tunjanagan_id . '" data-token_type="all_tunjanagans"><span class="fas fa-trash-restore"></span></button></span>',
-				$r->title_tunjanagan,
-				$r->jumlah_tunjanagan,
-				$tunjanagan_opt,
-				$jumlah_tunjanagan_opt,
+				'<span data-toggle="tooltip" data-placement="top" data-state="primary" title="'.$this->lang->line('umb_edit').'"><button type="button" class="btn icon-btn btn-sm btn-outline-secondary waves-effect waves-light" data-toggle="modal" data-target=".edit-modal-data" data-field_id="'. $r->tunjangan_id . '" data-field_type="gaji_tunjangan"><span class="fas fa-pencil-alt"></span></button></span><span data-toggle="tooltip" data-placement="top" data-state="danger" title="'.$this->lang->line('umb_delete').'"><button type="button" class="btn icon-btn btn-sm btn-outline-danger waves-effect waves-light delete" data-toggle="modal" data-target=".delete-modal" data-record-id="'. $r->tunjangan_id . '" data-token_type="all_tunjangans"><span class="fas fa-trash-restore"></span></button></span>',
+				$r->title_tunjangan,
+				$r->jumlah_tunjangan,
+				$tunjangan_opt,
+				$jumlah_tunjangan_opt,
 			);
 		}
 
 		$output = array(
 			"draw" => $draw,
-			"recordsTotal" => $tunjanagans->num_rows(),
-			"recordsFiltered" => $tunjanagans->num_rows(),
+			"recordsTotal" => $tunjangans->num_rows(),
+			"recordsFiltered" => $tunjangans->num_rows(),
 			"data" => $data
 		);
 		echo json_encode($output);
@@ -5379,7 +5379,7 @@ class Karyawans extends MY_Controller {
 				$opt_jumlah_komisi = $this->lang->line('umb_title_percent_pajak');
 			}
 			if($r->is_komisi_kena_pajak==0){
-				$opt_komisi = $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');
+				$opt_komisi = $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');
 			} else if($r->is_komisi_kena_pajak==1){
 				$opt_komisi = $this->lang->line('umb_fully_kena_pajak');
 			} else {
@@ -5474,7 +5474,7 @@ class Karyawans extends MY_Controller {
 				$opt_jumlah_lainnya = $this->lang->line('umb_title_percent_pajak');
 			}
 			if($r->ia_pembayaranlainnya_kena_pajak==0){
-				$other_opt = $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');
+				$other_opt = $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');
 			} else if($r->ia_pembayaranlainnya_kena_pajak==1){
 				$other_opt = $this->lang->line('umb_fully_kena_pajak');
 			} else {

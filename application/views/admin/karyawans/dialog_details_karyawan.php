@@ -1415,15 +1415,15 @@ if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='emp_kontak'
       });
     });	
   </script>
-<?php } else if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='e_gaji_tunjanagan' && $_GET['type']=='e_gaji_tunjanagan'){
+<?php } else if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='e_gaji_tunjangan' && $_GET['type']=='e_gaji_tunjangan'){
   ?>
   <div class="modal-header"> 
     <?php echo form_button(array('aria-label' => 'Close', 'data-dismiss' => 'modal', 'type' => 'button', 'class' => 'close', 'content' => '<span aria-hidden="true">×</span>')); ?>
-    <h4 class="modal-title" id="edit-modal-data"><?php echo $this->lang->line('umb_karyawan_edit_tunjanagan');?></h4>
+    <h4 class="modal-title" id="edit-modal-data"><?php echo $this->lang->line('umb_karyawan_edit_tunjangan');?></h4>
   </div>
-  <?php $attributes = array('name' => 'e_info_tunjanagan', 'id' => 'e_info_tunjanagan', 'autocomplete' => 'off');?>
+  <?php $attributes = array('name' => 'e_info_tunjangan', 'id' => 'e_info_tunjangan', 'autocomplete' => 'off');?>
   <?php $hidden = array('u_basic_info' => 'UPDATE');?>
-  <?php echo form_open('admin/karyawans/info_update_tunjanagan', $attributes, $hidden);?>
+  <?php echo form_open('admin/karyawans/info_update_tunjangan', $attributes, $hidden);?>
   <?php
   $edata_usr7 = array(
     'type'  => 'hidden',
@@ -1438,7 +1438,7 @@ if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='emp_kontak'
     'type'  => 'hidden',
     'id'  => 'e_field_id',
     'name'  => 'e_field_id',
-    'value' => $tunjanagan_id,
+    'value' => $tunjangan_id,
   );
   echo form_input($edata_usr8);
   ?>
@@ -1446,14 +1446,14 @@ if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='emp_kontak'
     <div class="row">
       <div class="col-md-3">
         <div class="form-group">
-          <label for="is_tunjanagan_kena_pajak">
-            <?php echo $this->lang->line('umb_gaji_tunjanagan_options');?>
+          <label for="is_tunjangan_kena_pajak">
+            <?php echo $this->lang->line('umb_gaji_tunjangan_options');?>
             <i class="hrastral-asterisk">*</i>
           </label>
-          <select name="is_tunjanagan_kena_pajak" id="is_tunjanagan_kena_pajak" class="form-control" data-plugin="select_hrm">
-            <option value="0" <?php if($is_tunjanagan_kena_pajak==0):?> selected="selected" <?php endif;?>><?php echo $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');?></option>
-            <option value="1" <?php if($is_tunjanagan_kena_pajak==1):?> selected="selected" <?php endif;?>><?php echo $this->lang->line('umb_fully_kena_pajak');?></option>
-            <option value="2" <?php if($is_tunjanagan_kena_pajak==2):?> selected="selected" <?php endif;?>><?php echo $this->lang->line('umb_partially_kena_pajak');?></option>
+          <select name="is_tunjangan_kena_pajak" id="is_tunjangan_kena_pajak" class="form-control" data-plugin="select_hrm">
+            <option value="0" <?php if($is_tunjangan_kena_pajak==0):?> selected="selected" <?php endif;?>><?php echo $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');?></option>
+            <option value="1" <?php if($is_tunjangan_kena_pajak==1):?> selected="selected" <?php endif;?>><?php echo $this->lang->line('umb_fully_kena_pajak');?></option>
+            <option value="2" <?php if($is_tunjangan_kena_pajak==2):?> selected="selected" <?php endif;?>><?php echo $this->lang->line('umb_partially_kena_pajak');?></option>
           </select>
         </div>
       </div>
@@ -1471,20 +1471,20 @@ if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='emp_kontak'
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label for="title_tunjanagan">
+          <label for="title_tunjangan">
             <?php echo $this->lang->line('dashboard_umb_title');?>
             <i class="hrastral-asterisk">*</i>
           </label>
-          <input class="form-control" placeholder="<?php echo $this->lang->line('dashboard_umb_title');?>" name="title_tunjanagan" type="text" value="<?php echo $title_tunjanagan;?>">
+          <input class="form-control" placeholder="<?php echo $this->lang->line('dashboard_umb_title');?>" name="title_tunjangan" type="text" value="<?php echo $title_tunjangan;?>">
         </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
-          <label for="jumlah_tunjanagan" class="control-label">
+          <label for="jumlah_tunjangan" class="control-label">
             <?php echo $this->lang->line('umb_jumlah');?>
             <i class="hrastral-asterisk">*</i>
           </label>
-          <input class="form-control" placeholder="<?php echo $this->lang->line('umb_jumlah');?>" name="jumlah_tunjanagan" type="text" value="<?php echo $jumlah_tunjanagan;?>">
+          <input class="form-control" placeholder="<?php echo $this->lang->line('umb_jumlah');?>" name="jumlah_tunjangan" type="text" value="<?php echo $jumlah_tunjangan;?>">
         </div>
       </div>
     </div>
@@ -1496,14 +1496,14 @@ if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='emp_kontak'
       Ladda.bind('button[type=submit]');
       $('[data-plugin="select_hrm"]').select2($(this).attr('data-options'));
       $('[data-plugin="select_hrm"]').select2({ width:'100%' });
-      $("#e_info_tunjanagan").submit(function(e){
+      $("#e_info_tunjangan").submit(function(e){
         e.preventDefault();
         var obj = $(this), action = obj.attr('name');
         $('.save').prop('disabled', true);
         $.ajax({
           type: "POST",
           url: e.target.action,
-          data: obj.serialize()+"&is_ajax=29&data=e_info_tunjanagan&type=e_info_tunjanagan&form="+action,
+          data: obj.serialize()+"&is_ajax=29&data=e_info_tunjangan&type=e_info_tunjangan&form="+action,
           cache: false,
           success: function (JSON) {
             if (JSON.error != '') {
@@ -1513,17 +1513,17 @@ if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='emp_kontak'
               Ladda.stopAll();
             } else {
               $('.edit-modal-data').modal('toggle');
-              var umb_table_all_tunjanagans = $('#umb_table_all_tunjanagans').dataTable({
+              var umb_table_all_tunjangans = $('#umb_table_all_tunjangans').dataTable({
                 "bDestroy": true,
                 "ajax": {
-                  url : "<?php echo site_url("admin/karyawans/gaji_all_tunjanagans") ?>/"+$('#user_id').val(),
+                  url : "<?php echo site_url("admin/karyawans/gaji_all_tunjangans") ?>/"+$('#user_id').val(),
                   type : 'GET'
                 },
                 "fnDrawCallback": function(settings){
                   $('[data-toggle="tooltip"]').tooltip();          
                 }
               });
-              umb_table_all_tunjanagans.api().ajax.reload(function(){ 
+              umb_table_all_tunjangans.api().ajax.reload(function(){ 
                 toastr.success(JSON.result);
                 $('input[name="csrf_hrastral"]').val(JSON.csrf_hash);
               }, true);
@@ -1686,7 +1686,7 @@ if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='emp_kontak'
   ?>
   <div class="modal-header"> 
     <?php echo form_button(array('aria-label' => 'Close', 'data-dismiss' => 'modal', 'type' => 'button', 'class' => 'close', 'content' => '<span aria-hidden="true">×</span>')); ?>
-    <h4 class="modal-title" id="edit-modal-data"><?php echo $this->lang->line('umb_karyawan_edit_tunjanagan');?></h4>
+    <h4 class="modal-title" id="edit-modal-data"><?php echo $this->lang->line('umb_karyawan_edit_tunjangan');?></h4>
   </div>
   <?php $attributes = array('name' => 'e_lembur_info', 'id' => 'e_lembur_info', 'autocomplete' => 'off');?>
   <?php $hidden = array('u_basic_info' => 'UPDATE');?>
@@ -1797,7 +1797,7 @@ if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='emp_kontak'
   ?>
   <div class="modal-header"> 
     <?php echo form_button(array('aria-label' => 'Close', 'data-dismiss' => 'modal', 'type' => 'button', 'class' => 'close', 'content' => '<span aria-hidden="true">×</span>')); ?>
-    <h4 class="modal-title" id="edit-modal-data"><?php echo $this->lang->line('umb_karyawan_edit_tunjanagan');?></h4>
+    <h4 class="modal-title" id="edit-modal-data"><?php echo $this->lang->line('umb_karyawan_edit_tunjangan');?></h4>
   </div>
   <?php $attributes = array('name' => 'e_gaji_info_komissi', 'id' => 'e_gaji_info_komissi', 'autocomplete' => 'off');?>
   <?php $hidden = array('u_basic_info' => 'UPDATE');?>
@@ -1829,7 +1829,7 @@ if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='emp_kontak'
             <i class="hrastral-asterisk">*</i>
           </label>
           <select name="is_komisi_kena_pajak" class="form-control" data-plugin="select_hrm">
-            <option value="0" <?php if($is_komisi_kena_pajak==0):?> selected="selected" <?php endif;?>><?php echo $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');?></option>
+            <option value="0" <?php if($is_komisi_kena_pajak==0):?> selected="selected" <?php endif;?>><?php echo $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');?></option>
             <option value="1" <?php if($is_komisi_kena_pajak==1):?> selected="selected" <?php endif;?>><?php echo $this->lang->line('umb_fully_kena_pajak');?></option>
             <option value="2" <?php if($is_komisi_kena_pajak==2):?> selected="selected" <?php endif;?>><?php echo $this->lang->line('umb_partially_kena_pajak');?></option>
           </select>
@@ -1912,7 +1912,7 @@ if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='emp_kontak'
   ?>
   <div class="modal-header"> 
     <?php echo form_button(array('aria-label' => 'Close', 'data-dismiss' => 'modal', 'type' => 'button', 'class' => 'close', 'content' => '<span aria-hidden="true">×</span>')); ?>
-    <h4 class="modal-title" id="edit-modal-data"><?php echo $this->lang->line('umb_karyawan_edit_tunjanagan');?></h4>
+    <h4 class="modal-title" id="edit-modal-data"><?php echo $this->lang->line('umb_karyawan_edit_tunjangan');?></h4>
   </div>
   <?php $attributes = array('name' => 'e_gaji_info_statutory_potongans', 'id' => 'e_gaji_info_statutory_potongans', 'autocomplete' => 'off');?>
   <?php $hidden = array('u_basic_info' => 'UPDATE');?>
@@ -2053,7 +2053,7 @@ if(isset($_GET['jd']) && isset($_GET['field_id']) && $_GET['data']=='emp_kontak'
             <i class="hrastral-asterisk">*</i>
           </label>
           <select name="ia_pembayaranlainnya_kena_pajak" class="form-control" data-plugin="select_hrm">
-            <option value="0" <?php if($ia_pembayaranlainnya_kena_pajak==0):?> selected="selected"<?php endif;?>><?php echo $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');?></option>
+            <option value="0" <?php if($ia_pembayaranlainnya_kena_pajak==0):?> selected="selected"<?php endif;?>><?php echo $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');?></option>
             <option value="1" <?php if($ia_pembayaranlainnya_kena_pajak==1):?> selected="selected"<?php endif;?>><?php echo $this->lang->line('umb_fully_kena_pajak');?></option>
             <option value="2" <?php if($ia_pembayaranlainnya_kena_pajak==2):?> selected="selected"<?php endif;?>><?php echo $this->lang->line('umb_partially_kena_pajak');?></option>
           </select>

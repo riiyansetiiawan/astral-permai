@@ -110,7 +110,7 @@ $(document).on("keyup", function() {
 
     $("#total").val(sum_total);
     $("#total_potongan").val(potongan);
-    $("#total_tunjanagan").val(tunjangan);
+    $("#total_tunjangan").val(tunjangan);
 
     var gaji_bersih = sum_total - potongan;
     $("#gaji_bersih").val(gaji_bersih);

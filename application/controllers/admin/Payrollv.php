@@ -180,15 +180,15 @@ class Payroll extends MY_Controller {
 				$p_class = 'emo_monthly_pay';
 			}
 			
-			$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($r->user_id);
-			$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($r->user_id);
-			$jumlah_tunjanagan = 0;
-			if($count_tunjanagans > 0) {
-				foreach($gaji_tunjanagans as $sl_tunjanagans){
-					$jumlah_tunjanagan += $sl_tunjanagans->jumlah_tunjanagan;
+			$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($r->user_id);
+			$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($r->user_id);
+			$jumlah_tunjangan = 0;
+			if($count_tunjangans > 0) {
+				foreach($gaji_tunjangans as $sl_tunjangans){
+					$jumlah_tunjangan += $sl_tunjangans->jumlah_tunjangan;
 				}
 			} else {
-				$jumlah_tunjanagan = 0;
+				$jumlah_tunjangan = 0;
 			}
 			
 			$gaji_pinjaman_potongan = $this->Karyawans_model->read_gaji_pinjaman_potongans($r->user_id);
@@ -229,7 +229,7 @@ class Payroll extends MY_Controller {
 			$jumlah_statutory_potongans = 0;
 			if($count_statutory_potongans > 0) {
 				foreach($statutory_potongans->result() as $sl_gaji_statutory_potongans){
-					//$sta_gaji = $jumlah_tunjanagan + $gaji_pokok;
+					//$sta_gaji = $jumlah_tunjangan + $gaji_pokok;
 					//$st_jumlah = $sta_gaji / 100 * $sl_statutory_potongans->jumlah_potongan;
 					$jumlah_statutory_potongans += $sl_gaji_statutory_potongans->jumlah_potongan;
 				}
@@ -249,7 +249,7 @@ class Payroll extends MY_Controller {
 				$jumlah_lembur = 0;
 			}
 			
-			$total_earning = $gaji_pokok + $jumlah_tunjanagan + $jumlah_lembur + $jumlah_komissi + $jumlah_pembayarans_lainnya;
+			$total_earning = $gaji_pokok + $jumlah_tunjangan + $jumlah_lembur + $jumlah_komissi + $jumlah_pembayarans_lainnya;
 			$total_potongan = $jumlah_ptng_pinjaman + $jumlah_statutory_potongans;
 			$total_gaji_bersih = $total_earning - $total_potongan;
 			//if($r->bayar_gaji_advance == ''){
@@ -257,7 +257,7 @@ class Payroll extends MY_Controller {
 				//$fgaji_bersih = $gaji_bersih_default + $statutory_potongans;
 			//	$gaji_bersih = $fgaji_bersih - $jumlah_ptng_pinjaman;
 			$gaji_bersih = number_format((float)$total_gaji_bersih, 2, '.', '');
-			//$allinfo = $gaji_pokok  .' - '.  $jumlah_tunjanagan  .' - '.  $all_pembayaran_lainnya  .' - '.  $jumlah_ptng_pinjaman  .' - '.  $jumlah_lembur  .' - '.  $statutory_potongans; // for testing purpose
+			//$allinfo = $gaji_pokok  .' - '.  $jumlah_tunjangan  .' - '.  $all_pembayaran_lainnya  .' - '.  $jumlah_ptng_pinjaman  .' - '.  $jumlah_lembur  .' - '.  $statutory_potongans; // for testing purpose
 			$check_pembayaran = $this->Payroll_model->read_check_melakukan_pembayaran_slipgaji($r->user_id,$p_date);
 			if($check_pembayaran->num_rows() > 0){
 				$melakukan_pembayaran = $this->Payroll_model->read_melakukan_pembayaran_slipgaji($r->user_id,$p_date);
@@ -420,7 +420,7 @@ class Payroll extends MY_Controller {
        		'total_komissi' => $this->input->post('total_komissi'),
        		'total_statutory_potongans' => $this->input->post('total_statutory_potongans'),
        		'total_pembayarans_lainnya' => $this->input->post('total_pembayarans_lainnya'),
-       		'total_tunjanagans' => $this->input->post('total_tunjanagans'),
+       		'total_tunjangans' => $this->input->post('total_tunjangans'),
        		'total_pinjaman' => $this->input->post('total_pinjaman'),
        		'total_lembur' => $this->input->post('total_lembur'),
        		'is_payment' => '1',
@@ -431,20 +431,20 @@ class Payroll extends MY_Controller {
        	
        	if ($result) {
 			// set tunjangan
-       		$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($this->input->post('krywn_id'));
-       		$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($this->input->post('krywn_id'));
-       		$jumlah_tunjanagan = 0;
-       		if($count_tunjanagans > 0) {
-       			foreach($gaji_tunjanagans as $sl_tunjanagans){
-       				$tunjanagan_data = array(
+       		$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($this->input->post('krywn_id'));
+       		$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($this->input->post('krywn_id'));
+       		$jumlah_tunjangan = 0;
+       		if($count_tunjangans > 0) {
+       			foreach($gaji_tunjangans as $sl_tunjangans){
+       				$tunjangan_data = array(
        					'slipgaji_id' => $result,
        					'karyawan_id' => $this->input->post('krywn_id'),
        					'gaji_bulan' => $this->input->post('pay_date'),
-       					'title_tunjanagan' => $sl_tunjanagans->title_tunjanagan,
-       					'jumlah_tunjanagan' => $sl_tunjanagans->jumlah_tunjanagan,
+       					'title_tunjangan' => $sl_tunjangans->title_tunjangan,
+       					'jumlah_tunjangan' => $sl_tunjangans->jumlah_tunjangan,
        					'created_at' => date('d-m-Y h:i:s')
        				);
-       				$_tunjanagan_data = $this->Payroll_model->add_gaji_slipgaji_tunjanagans($tunjanagan_data);
+       				$_tunjangan_data = $this->Payroll_model->add_gaji_slipgaji_tunjangans($tunjangan_data);
        			}
        		}
 			// set komissi
@@ -579,15 +579,15 @@ class Payroll extends MY_Controller {
    					$department_id = 1;	
    				}
    				
-   				$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($user_id);
-   				$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($user_id);
-   				$jumlah_tunjanagan = 0;
-   				if($count_tunjanagans > 0) {
-   					foreach($gaji_tunjanagans as $sl_tunjanagans){
-   						$jumlah_tunjanagan += $sl_tunjanagans->jumlah_tunjanagan;
+   				$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($user_id);
+   				$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($user_id);
+   				$jumlah_tunjangan = 0;
+   				if($count_tunjangans > 0) {
+   					foreach($gaji_tunjangans as $sl_tunjangans){
+   						$jumlah_tunjangan += $sl_tunjangans->jumlah_tunjangan;
    					}
    				} else {
-   					$jumlah_tunjanagan = 0;
+   					$jumlah_tunjangan = 0;
    				}
 		// 3: all loan/potongans
    				$gaji_pinjaman_potongan = $this->Karyawans_model->read_gaji_pinjaman_potongans($user_id);
@@ -641,14 +641,14 @@ class Payroll extends MY_Controller {
    				if(!is_null($statutory_potongans)):
    					$jumlah_statutory_potongans = 0;
    					foreach($statutory_potongans->result() as $sl_statutory_potongans) {
-				//$sta_gaji = $jumlah_tunjanagan + $gaji_pokok;
+				//$sta_gaji = $jumlah_tunjangan + $gaji_pokok;
    						$st_jumlah = $sl_statutory_potongans->jumlah_potongan;
    						$jumlah_statutory_potongans += $sl_statutory_potongans->jumlah_potongan;
    					}
    				endif;
    				
 		// add amount
-   				$add_gaji = $jumlah_tunjanagan + $gaji_pokok + $jumlah_lembur + $jumlah_pembayarans_lainnya + $jumlah_komissi;
+   				$add_gaji = $jumlah_tunjangan + $gaji_pokok + $jumlah_lembur + $jumlah_pembayarans_lainnya + $jumlah_komissi;
 		// add amount
    				$gaji_bersih_default = $add_gaji - $jumlah_ptng_pinjaman - $jumlah_statutory_potongans;
    				$gaji_bersih = $gaji_bersih_default;
@@ -664,7 +664,7 @@ class Payroll extends MY_Controller {
    					'gaji_bersih' => $gaji_bersih,
    					'type_upahh' => $krywnid->type_upahh,
    					
-   					'total_tunjanagans' => $jumlah_tunjanagan,
+   					'total_tunjangans' => $jumlah_tunjangan,
    					'total_pinjaman' => $jumlah_ptng_pinjaman,
    					'total_lembur' => $jumlah_lembur,
    					'total_komissi' => $jumlah_komissi,
@@ -677,20 +677,20 @@ class Payroll extends MY_Controller {
    				$result = $this->Payroll_model->add_gaji_slipgaji($data);	
    				
    				if ($result) {
-   					$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($user_id);
-   					$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($user_id);
-   					$jumlah_tunjanagan = 0;
-   					if($count_tunjanagans > 0) {
-   						foreach($gaji_tunjanagans as $sl_tunjanagans){
-   							$tunjanagan_data = array(
+   					$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($user_id);
+   					$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($user_id);
+   					$jumlah_tunjangan = 0;
+   					if($count_tunjangans > 0) {
+   						foreach($gaji_tunjangans as $sl_tunjangans){
+   							$tunjangan_data = array(
    								'slipgaji_id' => $result,
    								'karyawan_id' => $user_id,
    								'gaji_bulan' => $this->input->post('month_year'),
-   								'title_tunjanagan' => $sl_tunjanagans->title_tunjanagan,
-   								'jumlah_tunjanagan' => $sl_tunjanagans->jumlah_tunjanagan,
+   								'title_tunjangan' => $sl_tunjangans->title_tunjangan,
+   								'jumlah_tunjangan' => $sl_tunjangans->jumlah_tunjangan,
    								'created_at' => date('d-m-Y h:i:s')
    							);
-   							$_tunjanagan_data = $this->Payroll_model->add_gaji_slipgaji_tunjanagans($tunjanagan_data);
+   							$_tunjangan_data = $this->Payroll_model->add_gaji_slipgaji_tunjangans($tunjangan_data);
    						}
    					}
 			// set komissi
@@ -919,7 +919,7 @@ class Payroll extends MY_Controller {
 			'gaji_pokok' => $result[0]->gaji_pokok,
 			'upahh_harian' => $result[0]->upahh_harian,
 			'payment_method' => $p_method,				
-			'total_tunjanagans' => $result[0]->total_tunjanagans,
+			'total_tunjangans' => $result[0]->total_tunjangans,
 			'total_pinjaman' => $result[0]->total_pinjaman,
 			'total_lembur' => $result[0]->total_lembur,
 			'total_komissi' => $result[0]->total_komissi,
@@ -1133,9 +1133,9 @@ class Payroll extends MY_Controller {
 		</tr>
 		</table></div>
 		<br /><br />';
-		// tunjanagans
-		$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans_slipgaji($payment[0]->slipgaji_id);
-		$tunjanagans = $this->Karyawans_model->set_tunjanagans_karyawan_slipgaji($payment[0]->slipgaji_id);
+		// tunjangans
+		$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans_slipgaji($payment[0]->slipgaji_id);
+		$tunjangans = $this->Karyawans_model->set_tunjangans_karyawan_slipgaji($payment[0]->slipgaji_id);
 		// komissi
 		$count_komissi = $this->Karyawans_model->count_karyawan_komissi_slipgaji($payment[0]->slipgaji_id);
 		$komissi = $this->Karyawans_model->set_komissi_karyawan_slipgaji($payment[0]->slipgaji_id);
@@ -1151,7 +1151,7 @@ class Payroll extends MY_Controller {
 		// loan
 		$count_pinjaman = $this->Karyawans_model->count_karyawan_potongans_slipgaji($payment[0]->slipgaji_id);
 		$loan = $this->Karyawans_model->set_potongans_karyawan_slipgaji($payment[0]->slipgaji_id);
-		$jumlah_statutory_potongan = 0; $jumlah_ptng_pinjaman = 0; $jumlah_tunjanagans = 0;
+		$jumlah_statutory_potongan = 0; $jumlah_ptng_pinjaman = 0; $jumlah_tunjangans = 0;
 		$jumlah_komissi = 0; $jumlah_pembayarans_lainnya = 0; $jumlah_lembur = 0;
 		$tbl .= '<table cellpadding="5" cellspacing="0" border="0">
 		<tr style="height:17px;">
@@ -1210,8 +1210,8 @@ class Payroll extends MY_Controller {
 		</tr>
 		<tr style="height:17px;">
 		<td colspan="2" style="font-family:Calibri;font-size:10px;color:#000000;font-weight:bold;min-width:50px">';
-		if($count_tunjanagans > 0):
-			$tbl .= '<nobr>'.$this->lang->line('umb_karyawan_set_tunjanagans').'</nobr>';
+		if($count_tunjangans > 0):
+			$tbl .= '<nobr>'.$this->lang->line('umb_karyawan_set_tunjangans').'</nobr>';
 		endif;
 		$tbl .= '	
 		</td>
@@ -1220,13 +1220,13 @@ class Payroll extends MY_Controller {
 		</td>
 		<td style="font-family:Calibri;text-align:right;font-size:10px;color:#000000;min-width:50px">
 		';
-		if($count_tunjanagans > 0):
-			foreach($tunjanagans->result() as $r_tunjanagans) {
-				$jumlah_tunjanagans += $r_tunjanagans->jumlah_tunjanagan;
+		if($count_tunjangans > 0):
+			foreach($tunjangans->result() as $r_tunjangans) {
+				$jumlah_tunjangans += $r_tunjangans->jumlah_tunjangan;
 			}	
-			$tbl .= '<nobr>('.number_format($jumlah_tunjanagans, 2, '.', ',').')</nobr>';
+			$tbl .= '<nobr>('.number_format($jumlah_tunjangans, 2, '.', ',').')</nobr>';
 		else:
-			$jumlah_tunjanagans = 0;
+			$jumlah_tunjangans = 0;
 		endif;
 		$tbl .= '</td>
 		<td colspan="2" style="font-family:Calibri;font-size:10px;color:#000000;font-weight:bold;min-width:50px">
@@ -1241,7 +1241,7 @@ class Payroll extends MY_Controller {
 		<td style="font-family:Calibri;text-align:right;font-size:10px;color:#000000;min-width:50px">';
 		if($count_statutory_potongans > 0):
 			foreach($statutory_potongans->result() as $r_statutory_potongans) {
-									//$sta_gaji = $jumlah_tunjanagans + $bs;
+									//$sta_gaji = $jumlah_tunjangans + $bs;
 				$st_jumlah = $r_statutory_potongans->jumlah_potongan;
 				$jumlah_statutory_potongan += $r_statutory_potongans->jumlah_potongan;
 			}	
@@ -1351,7 +1351,7 @@ class Payroll extends MY_Controller {
 		</td>
 		<td style="font-family:Calibri;text-align:right;font-size:10px;color:#000000;min-width:50px">';								
 		$i=1;								
-		$total_earning = $bs + $jumlah_tunjanagans + $jumlah_lembur + $jumlah_komissi + $jumlah_pembayarans_lainnya;
+		$total_earning = $bs + $jumlah_tunjangans + $jumlah_lembur + $jumlah_komissi + $jumlah_pembayarans_lainnya;
 		$total_potongan = $jumlah_ptng_pinjaman + $jumlah_statutory_potongan;
 		$total_gaji_bersih = $total_earning - $total_potongan;
 		$tbl .= '</td>
@@ -1600,7 +1600,7 @@ class Payroll extends MY_Controller {
 			'security_deposit' => $result[0]->security_deposit,
 			'potongan_pajak' => $result[0]->potongan_pajak,
 			'gross_gaji' => $result[0]->gross_gaji,
-			'total_tunjanagans' => $result[0]->total_tunjanagans,
+			'total_tunjangans' => $result[0]->total_tunjangans,
 			'total_potongans' => $result[0]->total_potongans,
 			'gaji_bersih' => $result[0]->gaji_bersih,
 			'jumlah_pembayaran' => $result[0]->jumlah_pembayaran,
@@ -1625,7 +1625,7 @@ class Payroll extends MY_Controller {
 		$Return['csrf_hash'] = $this->security->get_csrf_hash();
 		$result = $this->Payroll_model->delete_record($id);
 		if(isset($id)) {
-			$this->Payroll_model->delete_slipgaji_tunjanagans_items($id);
+			$this->Payroll_model->delete_slipgaji_tunjangans_items($id);
 			$this->Payroll_model->delete_slipgaji_komissi_items($id);
 			$this->Payroll_model->delete_slipgaji_pembayaran_lainnya_items($id);
 			$this->Payroll_model->delete_slipgaji_statutory_potongans_items($id);

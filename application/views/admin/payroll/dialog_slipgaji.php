@@ -135,7 +135,7 @@ if($profile_picture!='' && $profile_picture!='no file') {
     <?php if($tunjangan_sewa_rumah!='' || $tunjangan_kesehatan!='' || $tunjangan_perjalanan!='' || $tunjangan_jabatan!=''): ?>
     <div class="col-sm-12 col-xs-12">
       <div class="card">
-        <div class="card-header text-uppercase"><b> <?php echo $this->lang->line('umb_payroll_tunjanagans');?></b> </div>
+        <div class="card-header text-uppercase"><b> <?php echo $this->lang->line('umb_payroll_tunjangans');?></b> </div>
         <div class="card-block">
           <blockquote class="card-blockquote">
             <div class="row m-b-1">
@@ -156,7 +156,7 @@ if($profile_picture!='' && $profile_picture!='no file') {
               <?php if($tunjangan_perjalanan!='' || $tunjangan_perjalanan!=0): ?>
               <div class="col-md-12">
                 <div class="f">
-                  <label for="name"><strong><?php echo $this->lang->line('umb_payroll_perjalanan_tunjanagan');?>: </strong></label>
+                  <label for="name"><strong><?php echo $this->lang->line('umb_payroll_perjalanan_tunjangan');?>: </strong></label>
                   <?php echo $this->Umb_model->currency_sign($tunjangan_perjalanan);?> </div>
               </div>
               <?php endif;?>
@@ -224,11 +224,11 @@ if($profile_picture!='' && $profile_picture!='no file') {
                 <?php echo $this->Umb_model->currency_sign($gross_gaji);?> </div>
             </div>
             <?php endif;?>
-            <?php if($total_tunjanagans): ?>
+            <?php if($total_tunjangans): ?>
             <div class="col-md-12">
               <div class="f">
-                <label for="name"><strong><?php echo $this->lang->line('umb_payroll_total_tunjanagan');?>: </strong></label>
-                <?php echo $this->Umb_model->currency_sign($total_tunjanagans);?> </div>
+                <label for="name"><strong><?php echo $this->lang->line('umb_payroll_total_tunjangan');?>: </strong></label>
+                <?php echo $this->Umb_model->currency_sign($total_tunjangans);?> </div>
             </div>
             <?php endif;?>
             <?php if($total_potongans!=''): ?>

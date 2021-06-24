@@ -2715,7 +2715,7 @@ CREATE TABLE `umb_melakukan_pembayaran` (
   `gaji_pokok` varchar(255) NOT NULL,
   `jumlah_pembayaran` varchar(255) NOT NULL,
   `gross_gaji` varchar(255) NOT NULL,
-  `total_tunjanagans` varchar(255) NOT NULL,
+  `total_tunjangans` varchar(255) NOT NULL,
   `total_potongans` varchar(255) NOT NULL,
   `gaji_bersih` varchar(255) NOT NULL,
   `tunjangan_sewa_rumah` varchar(255) NOT NULL,
@@ -3402,29 +3402,29 @@ INSERT INTO `umb_subpages_recruitment` (`subpages_id`, `page_id`, `sub_page_titl
 -- --------------------------------------------------------
 
 --
--- Table structure for table `umb_gaji_tunjanagans`
+-- Table structure for table `umb_gaji_tunjangans`
 --
 
-CREATE TABLE `umb_gaji_tunjanagans` (
-  `tunjanagan_id` int(11) NOT NULL,
+CREATE TABLE `umb_gaji_tunjangans` (
+  `tunjangan_id` int(11) NOT NULL,
   `karyawan_id` int(11) NOT NULL,
-  `is_tunjanagan_kena_pajak` int(11) NOT NULL,
+  `is_tunjangan_kena_pajak` int(11) NOT NULL,
   `jumlah_option` int(11) NOT NULL,
-  `title_tunjanagan` varchar(200) DEFAULT NULL,
-  `jumlah_tunjanagan` varchar(200) DEFAULT NULL,
+  `title_tunjangan` varchar(200) DEFAULT NULL,
+  `jumlah_tunjangan` varchar(200) DEFAULT NULL,
   `created_at` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Truncate table before insert `umb_gaji_tunjanagans`
+-- Truncate table before insert `umb_gaji_tunjangans`
 --
 
-TRUNCATE TABLE `umb_gaji_tunjanagans`;
+TRUNCATE TABLE `umb_gaji_tunjangans`;
 --
--- Dumping data for table `umb_gaji_tunjanagans`
+-- Dumping data for table `umb_gaji_tunjangans`
 --
 
-INSERT INTO `umb_gaji_tunjanagans` (`tunjanagan_id`, `karyawan_id`, `is_tunjanagan_kena_pajak`, `jumlah_option`, `title_tunjanagan`, `jumlah_tunjanagan`, `created_at`) VALUES
+INSERT INTO `umb_gaji_tunjangans` (`tunjangan_id`, `karyawan_id`, `is_tunjangan_kena_pajak`, `jumlah_option`, `title_tunjangan`, `jumlah_tunjangan`, `created_at`) VALUES
 (1, 1, 0, 0, 'Tunjangan Biaya Hidup', '100', NULL),
 (2, 1, 0, 0, 'Tunjangan Perumahan', '200', NULL),
 (3, 1, 0, 0, 'Tunjangan Belanja', '200', NULL),
@@ -3561,7 +3561,7 @@ CREATE TABLE `umb_gaji_slipgajii` (
   `upahh_harian` varchar(200) NOT NULL,
   `is_half_monthly_payroll` tinyint(1) NOT NULL,
   `jam_bekerja` varchar(50) NOT NULL DEFAULT '0',
-  `total_tunjanagans` varchar(200) NOT NULL,
+  `total_tunjangans` varchar(200) NOT NULL,
   `total_komissi` varchar(200) NOT NULL,
   `total_statutory_potongans` varchar(200) NOT NULL,
   `total_pembayarans_lainnya` varchar(200) NOT NULL,
@@ -3591,26 +3591,26 @@ TRUNCATE TABLE `umb_gaji_slipgajii`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `umb_gaji_slipgaji_tunjanagans`
+-- Table structure for table `umb_gaji_slipgaji_tunjangans`
 --
 
-CREATE TABLE `umb_gaji_slipgaji_tunjanagans` (
-  `slipgaji_tunjanagans_id` int(11) NOT NULL,
+CREATE TABLE `umb_gaji_slipgaji_tunjangans` (
+  `slipgaji_tunjangans_id` int(11) NOT NULL,
   `slipgaji_id` int(11) NOT NULL,
   `karyawan_id` int(11) NOT NULL,
-  `is_tunjanagan_kena_pajak` int(11) NOT NULL,
+  `is_tunjangan_kena_pajak` int(11) NOT NULL,
   `jumlah_option` int(11) NOT NULL,
-  `title_tunjanagan` varchar(200) NOT NULL,
-  `jumlah_tunjanagan` varchar(200) NOT NULL,
+  `title_tunjangan` varchar(200) NOT NULL,
+  `jumlah_tunjangan` varchar(200) NOT NULL,
   `gaji_bulan` varchar(200) NOT NULL,
   `created_at` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Truncate table before insert `umb_gaji_slipgaji_tunjanagans`
+-- Truncate table before insert `umb_gaji_slipgaji_tunjangans`
 --
 
-TRUNCATE TABLE `umb_gaji_slipgaji_tunjanagans`;
+TRUNCATE TABLE `umb_gaji_slipgaji_tunjangans`;
 -- --------------------------------------------------------
 
 --
@@ -3763,7 +3763,7 @@ CREATE TABLE `umb_gaji_templates` (
   `dana_yang_diberikan` varchar(255) NOT NULL,
   `potongan_pajak` varchar(255) NOT NULL,
   `gross_gaji` varchar(255) NOT NULL,
-  `total_tunjanagan` varchar(255) NOT NULL,
+  `total_tunjangan` varchar(255) NOT NULL,
   `total_potongan` varchar(255) NOT NULL,
   `gaji_bersih` varchar(255) NOT NULL,
   `added_by` int(111) NOT NULL,
@@ -3779,7 +3779,7 @@ TRUNCATE TABLE `umb_gaji_templates`;
 -- Dumping data for table `umb_gaji_templates`
 --
 
-INSERT INTO `umb_gaji_templates` (`gaji_template_id`, `perusahaan_id`, `gaji_grades`, `gaji_pokok`, `nilai_lembur`, `tunjangan_sewa_rumah`, `tunjangan_kesehatan`, `tunjangan_perjalanan`, `tunjangan_jabatan`, `security_deposit`, `dana_yang_diberikan`, `potongan_pajak`, `gross_gaji`, `total_tunjanagan`, `total_potongan`, `gaji_bersih`, `added_by`, `created_at`) VALUES
+INSERT INTO `umb_gaji_templates` (`gaji_template_id`, `perusahaan_id`, `gaji_grades`, `gaji_pokok`, `nilai_lembur`, `tunjangan_sewa_rumah`, `tunjangan_kesehatan`, `tunjangan_perjalanan`, `tunjangan_jabatan`, `security_deposit`, `dana_yang_diberikan`, `potongan_pajak`, `gross_gaji`, `total_tunjangan`, `total_potongan`, `gaji_bersih`, `added_by`, `created_at`) VALUES
 (1, 1, 'Monthly', '2500', '', '50', '60', '70', '80', '40', '20', '30', '2760', '260', '90', '2670', 1, '22-03-2021 01:40:06');
 
 -- --------------------------------------------------------
@@ -5150,10 +5150,10 @@ ALTER TABLE `umb_subpages_recruitment`
 ADD PRIMARY KEY (`subpages_id`);
 
 --
--- Indexes for table `umb_gaji_tunjanagans`
+-- Indexes for table `umb_gaji_tunjangans`
 --
-ALTER TABLE `umb_gaji_tunjanagans`
-ADD PRIMARY KEY (`tunjanagan_id`);
+ALTER TABLE `umb_gaji_tunjangans`
+ADD PRIMARY KEY (`tunjangan_id`);
 
 --
 -- Indexes for table `umb_gaji_bank_allocation`
@@ -5192,10 +5192,10 @@ ALTER TABLE `umb_gaji_slipgajii`
 ADD PRIMARY KEY (`slipgaji_id`);
 
 --
--- Indexes for table `umb_gaji_slipgaji_tunjanagans`
+-- Indexes for table `umb_gaji_slipgaji_tunjangans`
 --
-ALTER TABLE `umb_gaji_slipgaji_tunjanagans`
-ADD PRIMARY KEY (`slipgaji_tunjanagans_id`);
+ALTER TABLE `umb_gaji_slipgaji_tunjangans`
+ADD PRIMARY KEY (`slipgaji_tunjangans_id`);
 
 --
 -- Indexes for table `umb_gaji_slipgaji_komissi`
@@ -6048,10 +6048,10 @@ ALTER TABLE `umb_subpages_recruitment`
 MODIFY `subpages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `umb_gaji_tunjanagans`
+-- AUTO_INCREMENT for table `umb_gaji_tunjangans`
 --
-ALTER TABLE `umb_gaji_tunjanagans`
-MODIFY `tunjanagan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `umb_gaji_tunjangans`
+MODIFY `tunjangan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `umb_gaji_bank_allocation`
@@ -6090,10 +6090,10 @@ ALTER TABLE `umb_gaji_slipgajii`
 MODIFY `slipgaji_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `umb_gaji_slipgaji_tunjanagans`
+-- AUTO_INCREMENT for table `umb_gaji_slipgaji_tunjangans`
 --
-ALTER TABLE `umb_gaji_slipgaji_tunjanagans`
-MODIFY `slipgaji_tunjanagans_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `umb_gaji_slipgaji_tunjangans`
+MODIFY `slipgaji_tunjangans_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `umb_gaji_slipgaji_komissi`

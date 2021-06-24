@@ -291,9 +291,9 @@ class Payroll_model extends CI_Model{
 		
 	}
 
-	public function delete_slipgaji_tunjanagans_items($id){
+	public function delete_slipgaji_tunjangans_items($id){
 		$this->db->where('slipgaji_id', $id);
-		$this->db->delete('umb_gaji_slipgaji_tunjanagans');
+		$this->db->delete('umb_gaji_slipgaji_tunjangans');
 		
 	}
 
@@ -609,8 +609,8 @@ class Payroll_model extends CI_Model{
 		}
 	}
 
-	public function add_gaji_slipgaji_tunjanagans($data){
-		$this->db->insert('umb_gaji_slipgaji_tunjanagans', $data);
+	public function add_gaji_slipgaji_tunjangans($data){
+		$this->db->insert('umb_gaji_slipgaji_tunjangans', $data);
 		if ($this->db->affected_rows() > 0) {
 			return true;
 		} else {

@@ -10,7 +10,6 @@ $(document).ready(function() {
         }
     });
 
-    // Month & Year
     $('.tanggal_kehadiran').datepicker({
         changeMonth: true,
         changeYear: true,
@@ -26,9 +25,6 @@ $(document).ready(function() {
 
     $('[data-plugin="select_hrm"]').select2($(this).attr('data-options'));
     $('[data-plugin="select_hrm"]').select2({ width: '100%' });
-
-
-    /* update_laporan_kehadiran */
     $("#update_laporan_kehadiran").submit(function(e) {
 
         e.preventDefault();
@@ -50,7 +46,6 @@ $(document).ready(function() {
         toastr.success('Request Submit.');
         umb_table2.api().ajax.reload(function() {}, true);
     });
-
 
     $("#delete_record").submit(function(e) {
 
@@ -77,7 +72,6 @@ $(document).ready(function() {
         });
     });
 
-    // add kehadiran
     $('.add-modal-data').on('show.bs.modal', function(event) {
         var karyawan_id = $('#karyawan_id').val();
         var button = $(event.relatedTarget);
@@ -94,7 +88,6 @@ $(document).ready(function() {
         });
     });
 
-    // edit
     $('.edit-modal-data').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget);
         var permintaan_waktu_id = button.data('permintaan_waktu_id');
@@ -111,6 +104,7 @@ $(document).ready(function() {
         });
     });
 });
+
 $(document).on("click", ".delete", function() {
     $('input[name=_token]').val($(this).data('record-id'));
     $('#delete_record').attr('action', site_url + 'permintaan_lembur/delete_kehadiran/' + $(this).data('record-id')) + '/';

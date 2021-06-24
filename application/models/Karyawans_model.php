@@ -1137,9 +1137,9 @@ class Karyawans_model extends CI_Model {
 		return false;
 	}
 
-	public function set_tunjanagans_karyawan($id) {
+	public function set_tunjangans_karyawan($id) {
 		
-		$sql = 'SELECT * FROM umb_gaji_tunjanagans WHERE karyawan_id = ?';
+		$sql = 'SELECT * FROM umb_gaji_tunjangans WHERE karyawan_id = ?';
 		$binds = array($id);
 		$query = $this->db->query($sql, $binds);
 		
@@ -1192,9 +1192,9 @@ class Karyawans_model extends CI_Model {
 		return $query;
 	}
 
-	public function set_tunjanagans_karyawan_slipgaji($id) {
+	public function set_tunjangans_karyawan_slipgaji($id) {
 		
-		$sql = 'SELECT * FROM umb_gaji_slipgaji_tunjanagans WHERE slipgaji_id = ?';
+		$sql = 'SELECT * FROM umb_gaji_slipgaji_tunjangans WHERE slipgaji_id = ?';
 		$binds = array($id);
 		$query = $this->db->query($sql, $binds);
 		
@@ -1247,9 +1247,9 @@ class Karyawans_model extends CI_Model {
 		return $query;
 	}
 
-	public function count_karyawan_tunjanagans_slipgaji($id) {
+	public function count_karyawan_tunjangans_slipgaji($id) {
 		
-		$sql = 'SELECT * FROM umb_gaji_slipgaji_tunjanagans WHERE slipgaji_id = ?';
+		$sql = 'SELECT * FROM umb_gaji_slipgaji_tunjangans WHERE slipgaji_id = ?';
 		$binds = array($id);
 		$query = $this->db->query($sql, $binds);
 		
@@ -1301,9 +1301,9 @@ class Karyawans_model extends CI_Model {
 		return $query->num_rows();
 	}
 
-	public function count_karyawan_tunjanagans($id) {
+	public function count_karyawan_tunjangans($id) {
 		
-		$sql = 'SELECT * FROM umb_gaji_tunjanagans WHERE karyawan_id = ?';
+		$sql = 'SELECT * FROM umb_gaji_tunjangans WHERE karyawan_id = ?';
 		$binds = array($id);
 		$query = $this->db->query($sql, $binds);
 		
@@ -1355,9 +1355,9 @@ class Karyawans_model extends CI_Model {
 		return $query->num_rows();
 	}
 	
-	public function read_gaji_tunjanagans($id) {
+	public function read_gaji_tunjangans($id) {
 		
-		$sql = 'SELECT * FROM umb_gaji_tunjanagans WHERE karyawan_id = ?';
+		$sql = 'SELECT * FROM umb_gaji_tunjangans WHERE karyawan_id = ?';
 		$binds = array($id);
 		$query = $this->db->query($sql, $binds);
 		
@@ -1454,9 +1454,9 @@ class Karyawans_model extends CI_Model {
 		return $diff->format('%y') * 12 + $diff->format('%m');
 	}
 
-	public function read_single_gaji_tunjanagan($id) {
+	public function read_single_gaji_tunjangan($id) {
 		
-		$sql = 'SELECT * FROM umb_gaji_tunjanagans WHERE tunjanagan_id = ?';
+		$sql = 'SELECT * FROM umb_gaji_tunjangans WHERE tunjangan_id = ?';
 		$binds = array($id);
 		$query = $this->db->query($sql, $binds);
 		
@@ -1519,8 +1519,8 @@ class Karyawans_model extends CI_Model {
 		}
 	}
 	
-	public function add_gaji_tunjanagans($data){
-		$this->db->insert('umb_gaji_tunjanagans', $data);
+	public function add_gaji_tunjangans($data){
+		$this->db->insert('umb_gaji_tunjangans', $data);
 		if ($this->db->affected_rows() > 0) {
 			return true;
 		} else {
@@ -1573,9 +1573,9 @@ class Karyawans_model extends CI_Model {
 		}
 	}
 
-	public function delete_record_tunjanagan($id){
-		$this->db->where('tunjanagan_id', $id);
-		$this->db->delete('umb_gaji_tunjanagans');
+	public function delete_record_tunjangan($id){
+		$this->db->where('tunjangan_id', $id);
+		$this->db->delete('umb_gaji_tunjangans');
 		
 	}
 
@@ -1609,9 +1609,9 @@ class Karyawans_model extends CI_Model {
 		
 	}
 
-	public function update_record_gaji_tunjanagan($data, $id){
-		$this->db->where('tunjanagan_id', $id);
-		if( $this->db->update('umb_gaji_tunjanagans',$data)) {
+	public function update_record_gaji_tunjangan($data, $id){
+		$this->db->where('tunjangan_id', $id);
+		if( $this->db->update('umb_gaji_tunjangans',$data)) {
 			return true;
 		} else {
 			return false;

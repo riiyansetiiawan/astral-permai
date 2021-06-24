@@ -22,8 +22,8 @@
 	        var field_add = '&data=krywn_location&type=krywn_location&';
 	    } else if (field_tpe == 'imgdocument') {
 	        var field_add = '&data=e_imgdocument&type=e_imgdocument&';
-	    } else if (field_tpe == 'gaji_tunjanagan') {
-	        var field_add = '&data=e_gaji_tunjanagan&type=e_gaji_tunjanagan&';
+	    } else if (field_tpe == 'gaji_tunjangan') {
+	        var field_add = '&data=e_gaji_tunjangan&type=e_gaji_tunjangan&';
 	    } else if (field_tpe == 'gaji_pinjaman') {
 	        var field_add = '&data=e_gaji_pinjaman&type=e_gaji_pinjaman&';
 	    } else if (field_tpe == 'krywn_lembur') {
@@ -481,10 +481,10 @@
 	});
 
 	// On page load 
-	var umb_table_tunjanagans_ad = $('#umb_table_all_tunjanagans').dataTable({
+	var umb_table_tunjangans_ad = $('#umb_table_all_tunjangans').dataTable({
 	    "bDestroy": true,
 	    "ajax": {
-	        url: site_url + "karyawans/gaji_all_tunjanagans/" + $('#user_id').val(),
+	        url: site_url + "karyawans/gaji_all_tunjangans/" + $('#user_id').val(),
 	        type: 'GET'
 	    },
 	    "fnDrawCallback": function(settings) {
@@ -1098,7 +1098,7 @@
 	});
 
 	/* Add info */
-	jQuery("#karyawan_update_tunjanagan").submit(function(e) {
+	jQuery("#karyawan_update_tunjangan").submit(function(e) {
 
 	    e.preventDefault();
 	    var obj = jQuery(this),
@@ -1109,7 +1109,7 @@
 	    jQuery.ajax({
 	        type: "POST",
 	        url: e.target.action,
-	        data: obj.serialize() + "&is_ajax=4&data=karyawan_update_tunjanagan&type=karyawan_update_tunjanagan&form=" + action,
+	        data: obj.serialize() + "&is_ajax=4&data=karyawan_update_tunjangan&type=karyawan_update_tunjangan&form=" + action,
 	        cache: false,
 	        success: function(JSON) {
 	            if (JSON.error != '') {
@@ -1119,13 +1119,13 @@
 	                $('input[name="csrf_hrastral"]').val(JSON.csrf_hash);
 	                jQuery('.save').prop('disabled', false);
 	            } else {
-	                umb_table_tunjanagans_ad.api().ajax.reload(function() {
+	                umb_table_tunjangans_ad.api().ajax.reload(function() {
 	                    //toastr.clear();
 	                    //$('#hrload-img').hide();
 	                    toastr.success(JSON.result);
 	                    $('input[name="csrf_hrastral"]').val(JSON.csrf_hash);
 	                }, true);
-	                jQuery('#karyawan_update_tunjanagan')[0].reset();
+	                jQuery('#karyawan_update_tunjangan')[0].reset();
 	                jQuery('.save').prop('disabled', false);
 	            }
 	        }
@@ -1337,8 +1337,8 @@
 	    } else if (tk_type == 'imgdocument') {
 	        var field_add = '&is_ajax=30&data=delete_record&type=delete_imgdocument&';
 	        var tb_name = 'umb_table_' + tk_type;
-	    } else if (tk_type == 'all_tunjanagans') {
-	        var field_add = '&is_ajax=30&data=delete_record&type=delete_gaji_tunjanagan&';
+	    } else if (tk_type == 'all_tunjangans') {
+	        var field_add = '&is_ajax=30&data=delete_record&type=delete_gaji_tunjangan&';
 	        var tb_name = 'umb_table_' + tk_type;
 	    } else if (tk_type == 'all_potongans') {
 	        var field_add = '&is_ajax=30&data=delete_record&type=delete_gaji_pinjaman&';

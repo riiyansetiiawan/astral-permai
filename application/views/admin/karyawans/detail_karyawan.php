@@ -1720,8 +1720,8 @@ $cuti_user = $this->Umb_model->read_user_info($eid);
                           <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-update_gaji"> 
                             <i class="lnr lnr-strikethrough text-lightest"></i> &nbsp; <?php echo $this->lang->line('umb_karyawan_update_gaji');?>
                           </a> 
-                          <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-tunjanagans"> 
-                            <i class="lnr lnr-car text-lightest"></i> &nbsp; <?php echo $this->lang->line('umb_karyawan_set_tunjanagans');?>
+                          <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-tunjangans"> 
+                            <i class="lnr lnr-car text-lightest"></i> &nbsp; <?php echo $this->lang->line('umb_karyawan_set_tunjangans');?>
                           </a> 
                           <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-komissi"> 
                             <i class="lnr lnr-graduation-hat text-lightest"></i> &nbsp; <?php echo $this->lang->line('umb_hr_komissi');?>
@@ -1782,23 +1782,23 @@ $cuti_user = $this->Umb_model->read_user_info($eid);
                               <?php echo form_close(); ?> 
                             </div>
                           </div>
-                          <div class="tab-pane fade" id="account-tunjanagans">
+                          <div class="tab-pane fade" id="account-tunjangans">
                             <div class="box">
                               <div class="card-header with-elements"> 
                                 <span class="card-header-title mr-2"> 
                                   <strong> <?php echo $this->lang->line('umb_list_all');?></strong> 
-                                  <?php echo $this->lang->line('umb_karyawan_set_tunjanagans');?> 
+                                  <?php echo $this->lang->line('umb_karyawan_set_tunjangans');?> 
                                 </span> 
                               </div>
                               <div class="card-body">
                                 <div class="box-datatable table-responsive">
-                                  <table class="table table-striped table-bordered dataTable" id="umb_table_all_tunjanagans" style="width:100%;">
+                                  <table class="table table-striped table-bordered dataTable" id="umb_table_all_tunjangans" style="width:100%;">
                                     <thead>
                                       <tr>
                                         <th><?php echo $this->lang->line('umb_action');?></th>
                                         <th><?php echo $this->lang->line('dashboard_umb_title');?></th>
                                         <th><?php echo $this->lang->line('umb_jumlah');?></th>
-                                        <th><?php echo $this->lang->line('umb_gaji_tunjanagan_options');?></th>
+                                        <th><?php echo $this->lang->line('umb_gaji_tunjangan_options');?></th>
                                         <th><?php echo $this->lang->line('umb_jumlah_option');?></th>
                                       </tr>
                                     </thead>
@@ -1808,11 +1808,11 @@ $cuti_user = $this->Umb_model->read_user_info($eid);
                             </div>
                             <div class="card-header with-elements"> 
                               <span class="card-header-title mr-2"> 
-                                <strong> <?php echo $this->lang->line('umb_karyawan_set_tunjanagans');?></strong> 
+                                <strong> <?php echo $this->lang->line('umb_karyawan_set_tunjangans');?></strong> 
                               </span> 
                             </div>
                             <div class="card-body pb-2">
-                              <?php $attributes = array('name' => 'karyawan_update_tunjanagan', 'id' => 'karyawan_update_tunjanagan', 'autocomplete' => 'off');?>
+                              <?php $attributes = array('name' => 'karyawan_update_tunjangan', 'id' => 'karyawan_update_tunjangan', 'autocomplete' => 'off');?>
                               <?php $hidden = array('u_basic_info' => 'UPDATE');?>
                               <?php echo form_open('admin/karyawans/option_tunjangan_karyawan', $attributes, $hidden);?>
                               <?php
@@ -1826,12 +1826,12 @@ $cuti_user = $this->Umb_model->read_user_info($eid);
                               <div class="row">
                                 <div class="col-md-3">
                                   <div class="form-group">
-                                    <label for="is_tunjanagan_kena_pajak">
-                                      <?php echo $this->lang->line('umb_gaji_tunjanagan_options');?>
+                                    <label for="is_tunjangan_kena_pajak">
+                                      <?php echo $this->lang->line('umb_gaji_tunjangan_options');?>
                                       <i class="hrastral-asterisk">*</i>
                                     </label>
-                                    <select name="is_tunjanagan_kena_pajak" class="form-control" data-plugin="select_hrm">
-                                      <option value="0"><?php echo $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');?></option>
+                                    <select name="is_tunjangan_kena_pajak" class="form-control" data-plugin="select_hrm">
+                                      <option value="0"><?php echo $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');?></option>
                                       <option value="1"><?php echo $this->lang->line('umb_fully_kena_pajak');?></option>
                                       <option value="2"><?php echo $this->lang->line('umb_partially_kena_pajak');?></option>
                                     </select>
@@ -1855,7 +1855,7 @@ $cuti_user = $this->Umb_model->read_user_info($eid);
                                       <?php echo $this->lang->line('dashboard_umb_title');?>
                                       <i class="hrastral-asterisk">*</i>
                                     </label>
-                                    <input class="form-control" placeholder="<?php echo $this->lang->line('dashboard_umb_title');?>" name="title_tunjanagan" type="text" value="" id="title_tunjanagan">
+                                    <input class="form-control" placeholder="<?php echo $this->lang->line('dashboard_umb_title');?>" name="title_tunjangan" type="text" value="" id="title_tunjangan">
                                   </div>
                                 </div>
                                 <div class="col-md-3">
@@ -1864,7 +1864,7 @@ $cuti_user = $this->Umb_model->read_user_info($eid);
                                       <?php echo $this->lang->line('umb_jumlah');?>
                                       <i class="hrastral-asterisk">*</i>
                                     </label>
-                                    <input class="form-control" placeholder="<?php echo $this->lang->line('umb_jumlah');?>" name="jumlah_tunjanagan" type="text" value="" id="jumlah_tunjanagan">
+                                    <input class="form-control" placeholder="<?php echo $this->lang->line('umb_jumlah');?>" name="jumlah_tunjangan" type="text" value="" id="jumlah_tunjangan">
                                   </div>
                                 </div>
                               </div>
@@ -1927,7 +1927,7 @@ $cuti_user = $this->Umb_model->read_user_info($eid);
                                       <i class="hrastral-asterisk">*</i>
                                     </label>
                                     <select name="is_komisi_kena_pajak" class="form-control" data-plugin="select_hrm">
-                                      <option value="0"><?php echo $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');?></option>
+                                      <option value="0"><?php echo $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');?></option>
                                       <option value="1"><?php echo $this->lang->line('umb_fully_kena_pajak');?></option>
                                       <option value="2"><?php echo $this->lang->line('umb_partially_kena_pajak');?></option>
                                     </select>
@@ -2216,7 +2216,7 @@ $cuti_user = $this->Umb_model->read_user_info($eid);
                                       <i class="hrastral-asterisk">*</i>
                                     </label>
                                     <select name="ia_pembayaranlainnya_kena_pajak" class="form-control" data-plugin="select_hrm">
-                                      <option value="0"><?php echo $this->lang->line('umb_gaji_tunjanagan_todak_kena_pajak');?></option>
+                                      <option value="0"><?php echo $this->lang->line('umb_gaji_tunjangan_todak_kena_pajak');?></option>
                                       <option value="1"><?php echo $this->lang->line('umb_fully_kena_pajak');?></option>
                                       <option value="2"><?php echo $this->lang->line('umb_partially_kena_pajak');?></option>
                                     </select>

@@ -20,49 +20,49 @@ if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='payment'
 	}
 	?>
 	<?php
-	$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($user_id);
-	$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($user_id);
-	$jumlah_tunjanagan = 0;
-	$ejumlah_tunjanagan = 0;
-	$ijumlah_tunjanagan = 0;
-	if($count_tunjanagans > 0) {
-		foreach($gaji_tunjanagans as $sl_tunjanagans){
-		//$jumlah_tunjanagan += $sl_tunjanagans->jumlah_tunjanagan;
+	$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($user_id);
+	$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($user_id);
+	$jumlah_tunjangan = 0;
+	$ejumlah_tunjangan = 0;
+	$ijumlah_tunjangan = 0;
+	if($count_tunjangans > 0) {
+		foreach($gaji_tunjangans as $sl_tunjangans){
+		//$jumlah_tunjangan += $sl_tunjangans->jumlah_tunjangan;
 			if($system[0]->is_half_monthly==1){
 				if($system[0]->potong_setengah_bulan==2){
-					$ejumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan/2;
+					$ejumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan/2;
 				} else {
-					$ejumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+					$ejumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 				}
-				$jumlah_tunjanagan += $ejumlah_tunjanagan;
+				$jumlah_tunjangan += $ejumlah_tunjangan;
 			} else {
-				if($sl_tunjanagans->is_tunjanagan_kena_pajak == 1) {
-					if($sl_tunjanagans->jumlah_option == 0) {
-						$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+				if($sl_tunjangans->is_tunjangan_kena_pajak == 1) {
+					if($sl_tunjangans->jumlah_option == 0) {
+						$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 					} else {
-						$ijumlah_tunjanagan = $gaji_pokok / 100 * $sl_tunjanagans->jumlah_tunjanagan;
+						$ijumlah_tunjangan = $gaji_pokok / 100 * $sl_tunjangans->jumlah_tunjangan;
 					}
-					$jumlah_tunjanagan -= $ijumlah_tunjanagan; 
-				} else if($sl_tunjanagans->is_tunjanagan_kena_pajak == 2) {
-					if($sl_tunjanagans->jumlah_option == 0) {
-						$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan / 2;
+					$jumlah_tunjangan -= $ijumlah_tunjangan; 
+				} else if($sl_tunjangans->is_tunjangan_kena_pajak == 2) {
+					if($sl_tunjangans->jumlah_option == 0) {
+						$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan / 2;
 					} else {
-						$ijumlah_tunjanagan = ($gaji_pokok / 100) / 2 * $sl_tunjanagans->jumlah_tunjanagan;
+						$ijumlah_tunjangan = ($gaji_pokok / 100) / 2 * $sl_tunjangans->jumlah_tunjangan;
 					}
-					$jumlah_tunjanagan -= $ijumlah_tunjanagan; 
+					$jumlah_tunjangan -= $ijumlah_tunjangan; 
 				} else {
-					if($sl_tunjanagans->jumlah_option == 0) {
-						$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+					if($sl_tunjangans->jumlah_option == 0) {
+						$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 					} else {
-						$ijumlah_tunjanagan = $gaji_pokok / 100 * $sl_tunjanagans->jumlah_tunjanagan;
+						$ijumlah_tunjangan = $gaji_pokok / 100 * $sl_tunjangans->jumlah_tunjangan;
 					}
-					$jumlah_tunjanagan += $ijumlah_tunjanagan;
+					$jumlah_tunjangan += $ijumlah_tunjangan;
 				}
 			}
 			
 		}
 	} else {
-		$jumlah_tunjanagan = 0;
+		$jumlah_tunjangan = 0;
 	}
 // 3: all loan/potongans
 	$gaji_pinjaman_potongan = $this->Karyawans_model->read_gaji_pinjaman_potongans($user_id);
@@ -221,17 +221,17 @@ if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='payment'
 
 // saudi gosi
 	if($system[0]->enable_asuransi != 0){
-		$jml_asuransi = $gaji_pokok + $jumlah_tunjanagan;
+		$jml_asuransi = $gaji_pokok + $jumlah_tunjangan;
 		$enable_asuransi = $jml_asuransi / 100 * $system[0]->enable_asuransi;
 		$asuransi = $enable_asuransi;
 	} else {
 		$asuransi = 0;
 	}
 // add amount
-	$add_gaji = $jumlah_tunjanagan + $gaji_pokok + $jumlah_lembur + $all_pembayaran_lainnya + $jumlah_komissi + $asuransi;
+	$add_gaji = $jumlah_tunjangan + $gaji_pokok + $jumlah_lembur + $all_pembayaran_lainnya + $jumlah_komissi + $asuransi;
 // add amount
 	$gaji_bersih_default = $add_gaji - $jumlah_ptng_pinjaman - $jumlah_statutory_potongans;
-	$sta_gaji = $jumlah_tunjanagan + $gaji_pokok;
+	$sta_gaji = $jumlah_tunjangan + $gaji_pokok;
 
 	$estatutory_potongans = $jumlah_statutory_potongans;
 // net gaji + statutory potongans
@@ -326,8 +326,8 @@ if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='payment'
 		<div class="row">
 			<div class="col-md-4">
 				<div class="form-group">
-					<label for="name"><?php echo $this->lang->line('umb_payroll_total_tunjanagan');?></label>
-					<input type="text" name="total_tunjanagans" class="form-control" value="<?php echo $jumlah_tunjanagan;?>" readonly="readonly">
+					<label for="name"><?php echo $this->lang->line('umb_payroll_total_tunjangan');?></label>
+					<input type="text" name="total_tunjangans" class="form-control" value="<?php echo $jumlah_tunjangan;?>" readonly="readonly">
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -402,7 +402,7 @@ if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='payment'
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-group">
-						<span><strong>NOTE:</strong> <?php echo $this->lang->line('umb_payroll_total_tunjanagan');?>,<?php echo $this->lang->line('umb_hr_komissi');?>,<?php echo $this->lang->line('umb_payroll_total_pinjaman');?>,<?php echo $this->lang->line('umb_payroll_total_lembur');?>,<?php echo $this->lang->line('umb_karyawan_set_statutory_potongans');?>,<?php echo $this->lang->line('umb_karyawan_set_pembayaran_lainnya');?> are not editable.</span>
+						<span><strong>NOTE:</strong> <?php echo $this->lang->line('umb_payroll_total_tunjangan');?>,<?php echo $this->lang->line('umb_hr_komissi');?>,<?php echo $this->lang->line('umb_payroll_total_pinjaman');?>,<?php echo $this->lang->line('umb_payroll_total_lembur');?>,<?php echo $this->lang->line('umb_karyawan_set_statutory_potongans');?>,<?php echo $this->lang->line('umb_karyawan_set_pembayaran_lainnya');?> are not editable.</span>
 					</div>
 				</div>
 			</div> 
@@ -463,37 +463,37 @@ if(isset($_GET['jd']) && isset($_GET['karyawan_id']) && $_GET['data']=='payment'
 	$gaji_pokok = $gaji_pokok;
 	?>
 	<?php
-	$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($user_id);
-	$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($user_id);
-	$jumlah_tunjanagan = 0;
-	if($count_tunjanagans > 0) {
-		foreach($gaji_tunjanagans as $sl_tunjanagans){
-			if($sl_tunjanagans->is_tunjanagan_kena_pajak == 1) {
-				if($sl_tunjanagans->jumlah_option == 0) {
-					$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+	$gaji_tunjangans = $this->Karyawans_model->read_gaji_tunjangans($user_id);
+	$count_tunjangans = $this->Karyawans_model->count_karyawan_tunjangans($user_id);
+	$jumlah_tunjangan = 0;
+	if($count_tunjangans > 0) {
+		foreach($gaji_tunjangans as $sl_tunjangans){
+			if($sl_tunjangans->is_tunjangan_kena_pajak == 1) {
+				if($sl_tunjangans->jumlah_option == 0) {
+					$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 				} else {
-					$ijumlah_tunjanagan = $gaji_pokok / 100 * $sl_tunjanagans->jumlah_tunjanagan;
+					$ijumlah_tunjangan = $gaji_pokok / 100 * $sl_tunjangans->jumlah_tunjangan;
 				}
-				$jumlah_tunjanagan -= $ijumlah_tunjanagan; 
-			} else if($sl_tunjanagans->is_tunjanagan_kena_pajak == 2) {
-				if($sl_tunjanagans->jumlah_option == 0) {
-					$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan / 2;
+				$jumlah_tunjangan -= $ijumlah_tunjangan; 
+			} else if($sl_tunjangans->is_tunjangan_kena_pajak == 2) {
+				if($sl_tunjangans->jumlah_option == 0) {
+					$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan / 2;
 				} else {
-					$ijumlah_tunjanagan = ($gaji_pokok / 100) / 2 * $sl_tunjanagans->jumlah_tunjanagan;
+					$ijumlah_tunjangan = ($gaji_pokok / 100) / 2 * $sl_tunjangans->jumlah_tunjangan;
 				}
-				$jumlah_tunjanagan -= $ijumlah_tunjanagan; 
+				$jumlah_tunjangan -= $ijumlah_tunjangan; 
 			} else {
-				if($sl_tunjanagans->jumlah_option == 0) {
-					$ijumlah_tunjanagan = $sl_tunjanagans->jumlah_tunjanagan;
+				if($sl_tunjangans->jumlah_option == 0) {
+					$ijumlah_tunjangan = $sl_tunjangans->jumlah_tunjangan;
 				} else {
-					$ijumlah_tunjanagan = $gaji_pokok / 100 * $sl_tunjanagans->jumlah_tunjanagan;
+					$ijumlah_tunjangan = $gaji_pokok / 100 * $sl_tunjangans->jumlah_tunjangan;
 				}
-				$jumlah_tunjanagan += $ijumlah_tunjanagan;
+				$jumlah_tunjangan += $ijumlah_tunjangan;
 			}
-		  //$jumlah_tunjanagan += $sl_tunjanagans->jumlah_tunjanagan;
+		  //$jumlah_tunjangan += $sl_tunjangans->jumlah_tunjangan;
 		}
 	} else {
-		$jumlah_tunjanagan = 0;
+		$jumlah_tunjangan = 0;
 	}
 // 3: all loan/potongans
 	$gaji_pinjaman_potongan = $this->Karyawans_model->read_gaji_pinjaman_potongans($user_id);
@@ -630,17 +630,17 @@ foreach ($lembur_count as $lembur_hr){
 }
 // saudi gosi
 if($system[0]->enable_asuransi != 0){
-	$jml_asuransi = $gaji_pokok + $jumlah_tunjanagan;
+	$jml_asuransi = $gaji_pokok + $jumlah_tunjangan;
 	$enable_asuransi = $jml_asuransi / 100 * $system[0]->enable_asuransi;
 	$asuransi = $enable_asuransi;
 } else {
 	$asuransi = 0;
 }
 // add amount
-$add_gaji = $jumlah_tunjanagan + $jumlah_lembur + $all_pembayaran_lainnya + $jumlah_komissi + $asuransi;
+$add_gaji = $jumlah_tunjangan + $jumlah_lembur + $all_pembayaran_lainnya + $jumlah_komissi + $asuransi;
 // add amount
 $gaji_bersih_default = $add_gaji - $jumlah_ptng_pinjaman - $jumlah_statutory_potongans;
-$sta_gaji = $jumlah_tunjanagan + $gaji_pokok;
+$sta_gaji = $jumlah_tunjangan + $gaji_pokok;
 
 $estatutory_potongans = $jumlah_statutory_potongans;
 // net gaji + statutory potongans
@@ -719,8 +719,8 @@ $gaji_bersih = number_format((float)$gaji_bersih, 2, '.', '');
 	<div class="row">
 		<div class="col-md-4">
 			<div class="form-group">
-				<label for="name"><?php echo $this->lang->line('umb_payroll_total_tunjanagan');?></label>
-				<input type="text" name="total_tunjanagans" class="form-control" value="<?php echo $jumlah_tunjanagan;?>" readonly="readonly">
+				<label for="name"><?php echo $this->lang->line('umb_payroll_total_tunjangan');?></label>
+				<input type="text" name="total_tunjangans" class="form-control" value="<?php echo $jumlah_tunjangan;?>" readonly="readonly">
 			</div>
 		</div>
 		<div class="col-md-4">
@@ -785,7 +785,7 @@ $gaji_bersih = number_format((float)$gaji_bersih, 2, '.', '');
 	<div class="row">
 		<div class="col-md-12">
 			<div class="form-group">
-				<span><strong>NOTE:</strong> <?php echo $this->lang->line('umb_payroll_total_tunjanagan');?>,<?php echo $this->lang->line('umb_hr_komissi');?>,<?php echo $this->lang->line('umb_payroll_total_pinjaman');?>,<?php echo $this->lang->line('umb_payroll_total_lembur');?>,<?php echo $this->lang->line('umb_karyawan_set_statutory_potongans');?>,<?php echo $this->lang->line('umb_karyawan_set_pembayaran_lainnya');?> are not editable.</span>
+				<span><strong>NOTE:</strong> <?php echo $this->lang->line('umb_payroll_total_tunjangan');?>,<?php echo $this->lang->line('umb_hr_komissi');?>,<?php echo $this->lang->line('umb_payroll_total_pinjaman');?>,<?php echo $this->lang->line('umb_payroll_total_lembur');?>,<?php echo $this->lang->line('umb_karyawan_set_statutory_potongans');?>,<?php echo $this->lang->line('umb_karyawan_set_pembayaran_lainnya');?> are not editable.</span>
 			</div>
 		</div>
 	</div> 

@@ -3527,7 +3527,7 @@ class User extends MY_Controller {
 			'security_deposit' => $result[0]->security_deposit,
 			'potongan_pajak' => $result[0]->potongan_pajak,
 			'gross_gaji' => $result[0]->gross_gaji,
-			'total_tunjanagans' => $result[0]->total_tunjanagans,
+			'total_tunjangans' => $result[0]->total_tunjangans,
 			'total_potongans' => $result[0]->total_potongans,
 			'gaji_bersih' => $result[0]->gaji_bersih,
 			'comments' => $result[0]->comments,
