@@ -3429,7 +3429,7 @@ INSERT INTO `umb_gaji_tunjanagans` (`tunjanagan_id`, `karyawan_id`, `is_tunjanag
 (2, 1, 0, 0, 'Tunjangan Perumahan', '200', NULL),
 (3, 1, 0, 0, 'Tunjangan Belanja', '200', NULL),
 (4, 1, 0, 0, 'Tunjangan Makan', '100', NULL),
-(5, 1, 0, 0, 'Tunjanagan Perjalanan', '200', NULL);
+(5, 1, 0, 0, 'tunjangan Perjalanan', '200', NULL);
 
 -- --------------------------------------------------------
 

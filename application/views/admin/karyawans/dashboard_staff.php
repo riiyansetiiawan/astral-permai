@@ -102,7 +102,7 @@
             <div class="d-flex align-items-center">
               <div class="ion ion-md-calendar display-4 text-warning"></div>
               <div class="ml-3">
-                <div class="text-muted small"><?php echo $this->lang->line('umb_cuti_request');?></div>
+                <div class="text-muted small"><?php echo $this->lang->line('umb_permintaan_cuti');?></div>
                 <div class="text-large"><?php echo karyawan_permintaan_cutii();?></div>
               </div>
             </div>
@@ -295,7 +295,7 @@
       <div class="col-md-6">
         <div class="card mb-4">
           <h6 class="card-header with-elements border-0 pr-0 pb-0">
-            <div class="card-header-title"><?php echo $this->lang->line('umb_location_karyawan_txt');?></div>
+            <div class="card-header-title"><?php echo $this->lang->line('umb_txt_lokasi_karyawan');?></div>
           </h6>
           <div class="row">
             <div class="col-md-6">
@@ -340,7 +340,7 @@
     <div class="col-md-6">
       <div class="card mb-4">
         <h6 class="card-header with-elements border-0 pr-0 pb-0">
-          <div class="card-header-title"><?php echo $this->lang->line('umb_karyawan_perusahaan_txt');?></div>
+          <div class="card-header-title"><?php echo $this->lang->line('umb_txt_karyawan_perusahaan');?></div>
         </h6>
         <div class="row">
           <div class="col-md-6">

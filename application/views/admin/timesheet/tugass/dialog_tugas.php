@@ -338,7 +338,7 @@ if(isset($_GET['jd']) && isset($_GET['tugas_id']) && $_GET['data']=='view_tugas'
     });
 	});	
 </script>
-<?php } else if(isset($_GET['jd']) && isset($_GET['variasi_id']) && $_GET['data']=='project_variation'){
+<?php } else if(isset($_GET['jd']) && isset($_GET['variasi_id']) && $_GET['data']=='variasi_project'){
 	$assigned_ids = explode(',',$assigned_to);
   ?>
   <div class="modal-header">
@@ -401,8 +401,8 @@ if(isset($_GET['jd']) && isset($_GET['tugas_id']) && $_GET['data']=='view_tugas'
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label for="jam_variasi" class="control-label"><?php echo $this->lang->line('umb_project_variation_hrs');?></label>
-              <input class="form-control" placeholder="<?php echo $this->lang->line('umb_project_variation_hrs');?>" name="jam_variasi" type="text" value="<?php echo $jam_variasi;?>">
+              <label for="jam_variasi" class="control-label"><?php echo $this->lang->line('umb_variasi_project_hrs');?></label>
+              <input class="form-control" placeholder="<?php echo $this->lang->line('umb_variasi_project_hrs');?>" name="jam_variasi" type="text" value="<?php echo $jam_variasi;?>">
             </div>
           </div>
         </div>
@@ -469,7 +469,7 @@ if(isset($_GET['jd']) && isset($_GET['tugas_id']) && $_GET['data']=='view_tugas'
       $.ajax({
         type: "POST",
         url: e.target.action,
-        data: obj.serialize()+"&is_ajax=1&edit_type=variation&form="+action,
+        data: obj.serialize()+"&is_ajax=1&edit_type=variasi&form="+action,
         cache: false,
         success: function (JSON) {
          if (JSON.error != '') {
@@ -477,7 +477,7 @@ if(isset($_GET['jd']) && isset($_GET['tugas_id']) && $_GET['data']=='view_tugas'
           $('input[name="csrf_hrastral"]').val(JSON.csrf_hash);
           $('.save').prop('disabled', false);
         } else {
-          var umb_variation_table = $('#umb_variation_table').dataTable({
+          var umb_table_variasi = $('#umb_table_variasi').dataTable({
             "bDestroy": true,
             "ajax": {
              url : "<?php echo site_url('admin/timesheet/get_variasi_project');?>/"+$('#tproject_id').val(),
@@ -487,7 +487,7 @@ if(isset($_GET['jd']) && isset($_GET['tugas_id']) && $_GET['data']=='view_tugas'
             $('[data-toggle="tooltip"]').tooltip();          
           }
         });
-          umb_variation_table.api().ajax.reload(function(){ 
+          umb_table_variasi.api().ajax.reload(function(){ 
            toastr.success(JSON.result);
          }, true);
           $('input[name="csrf_hrastral"]').val(JSON.csrf_hash);

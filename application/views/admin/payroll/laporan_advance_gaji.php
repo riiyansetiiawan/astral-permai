@@ -7,7 +7,7 @@
 <div class="card">
   <h6 class="card-header"> <?php echo $this->lang->line('umb_advance_gaji');?> <?php echo $this->lang->line('umb_report');?> </h6>
   <div class="card-datatable table-responsive">
-    <table class="datatables-demo table table-striped table-bordered" id="umb_table_report">
+    <table class="datatables-demo table table-striped table-bordered" id="umb_table_laporan">
       <thead>
         <tr>
           <th><?php echo $this->lang->line('umb_action');?></th>

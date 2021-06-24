@@ -9,9 +9,9 @@
     <div class="col-md-12 <?php echo $get_animate;?>">
         <div class="ui-bordered px-4 pt-4 mb-4">
         <input type="hidden" id="user_id" value="0" />
-        <?php $attributes = array('name' => 'training_report', 'id' => 'training_report', 'autocomplete' => 'off', 'class' => 'add form-hrm');?>
+        <?php $attributes = array('name' => 'laporan_training', 'id' => 'laporan_training', 'autocomplete' => 'off', 'class' => 'add form-hrm');?>
 		<?php $hidden = array('euser_id' => $session['user_id']);?>
-        <?php echo form_open('admin/laporans/training_report', $attributes, $hidden);?>
+        <?php echo form_open('admin/laporans/laporan_training', $attributes, $hidden);?>
         <?php
 			$data = array(
 			  'name'        => 'user_id',

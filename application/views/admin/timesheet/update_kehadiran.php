@@ -45,7 +45,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-12">
-            <?php $attributes = array('name' => 'update_kehadiran_report', 'id' => 'update_kehadiran_report', 'autocomplete' => 'off');?>
+            <?php $attributes = array('name' => 'update_laporan_kehadiran', 'id' => 'update_laporan_kehadiran', 'autocomplete' => 'off');?>
             <?php $hidden = array('user_id' => $session['user_id']);?>
             <?php echo form_open('admin/timesheet/update_kehadiran', $attributes, $hidden);?>
             <?php

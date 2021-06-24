@@ -146,7 +146,7 @@ class Dashboard extends MY_Controller {
 		$Return['absent'] = $abs;
 		$Return['absent_label'] = $this->lang->line('umb_absent');
 		$Return['bekerja_label'] = $this->lang->line('umb_krywn_bekerja');
-		$Return['working'] = $bekerja;
+		$Return['bekerja'] = $bekerja;
 		$this->output($Return);
 		exit;
 	}
@@ -748,13 +748,10 @@ class Dashboard extends MY_Controller {
 	public function hrastral_permintaan_lembur() {
 		
 		$Return = array('lembur_approved'=>'', 'lembur_pending'=>'', 'lembur_rejected'=>'', 'approved'=>'', 'pending'=>'','rejected'=>'');
-		
 		$Return['approved'] = karyawan_approved_permintaan_lembur();
 		$Return['lembur_approved'] = $this->lang->line('umb_approved');
-		// working
 		$Return['pending'] = karyawan_pending_permintaan_lembur();
 		$Return['lembur_pending'] = $this->lang->line('umb_pending');
-		
 		$Return['rejected'] = karyawan_rejected_permintaan_lembur();
 		$Return['lembur_rejected'] = $this->lang->line('umb_rejected');
 		$this->output($Return);
@@ -767,7 +764,6 @@ class Dashboard extends MY_Controller {
 		
 		$Return['total_clients'] = total_clients();
 		$Return['clients_label'] = $this->lang->line('umb_project_clients');
-		// working
 		$Return['total_leads'] = total_leads();
 		$Return['leads_label'] = $this->lang->line('umb_leads');
 		

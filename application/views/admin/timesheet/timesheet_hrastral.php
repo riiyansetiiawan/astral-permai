@@ -196,7 +196,7 @@ $imonth = date('F', $date);
   
   <div id="smartwizard-2-step-3" class="animated fadeIn tab-pane step-content mt-3">
    <div class="ui-bordered px-4 pt-4 mb-4">
-    <?php $attributes = array('name' => 'update_kehadiran_report', 'id' => 'update_kehadiran_report', 'autocomplete' => 'off');?>
+    <?php $attributes = array('name' => 'update_laporan_kehadiran', 'id' => 'update_laporan_kehadiran', 'autocomplete' => 'off');?>
     <?php $hidden = array('user_id' => $session['user_id']);?>
     <?php echo form_open('admin/timesheet/update_kehadiran', $attributes, $hidden);?>
     <?php

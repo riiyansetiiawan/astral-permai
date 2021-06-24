@@ -430,7 +430,7 @@ class Payroll extends MY_Controller {
        	$result = $this->Payroll_model->add_gaji_slipgaji($data);	
        	
        	if ($result) {
-			// set tunjanagan
+			// set tunjangan
        		$gaji_tunjanagans = $this->Karyawans_model->read_gaji_tunjanagans($this->input->post('krywn_id'));
        		$count_tunjanagans = $this->Karyawans_model->count_karyawan_tunjanagans($this->input->post('krywn_id'));
        		$jumlah_tunjanagan = 0;
