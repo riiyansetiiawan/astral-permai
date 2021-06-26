@@ -14,22 +14,18 @@ class Assets_model extends CI_Model {
 	}
 	
 	public function get_assets() {
-
 		return $this->db->get("umb_assets");
 	}
 	
 	public function get_assets_karyawan($id) {
-		
 		//$id = $this->db->escape($id);
 		$sql = 'SELECT * FROM umb_assets WHERE karyawan_id = ?';
 		$binds = array($id);
 		$query = $this->db->query($sql, $binds);
-		
 		return $query;
 	}
 
 	public function get_perusahaan_assets($perusahaan_id) {
-
 		$sql = 'SELECT * FROM umb_assets WHERE perusahaan_id = ?';
 		$binds = array($perusahaan_id);
 		$query = $this->db->query($sql, $binds);
@@ -37,17 +33,14 @@ class Assets_model extends CI_Model {
 	}
 
 	public function get_all_kategoris_assets() {
-
 		$query = $this->db->get("umb_kategoris_assets");
 		return $query->result();
 	}
 
 	public function read_info_assets($id) {
-
 		$sql = 'SELECT * FROM umb_assets WHERE assets_id = ?';
 		$binds = array($id);
 		$query = $this->db->query($sql, $binds);
-		
 		if ($query->num_rows() > 0) {
 			return $query->result();
 		} else {
@@ -56,7 +49,6 @@ class Assets_model extends CI_Model {
 	}
 	
 	public function read_info_kategori_assets($id) {
-
 		$sql = 'SELECT * FROM umb_kategoris_assets WHERE kategori_assets_id = ?';
 		$binds = array($id);
 		$query = $this->db->query($sql, $binds);
@@ -94,11 +86,9 @@ class Assets_model extends CI_Model {
 	public function delete_record_kategori_assets($id){
 		$this->db->where('kategori_assets_id', $id);
 		$this->db->delete('umb_kategoris_assets');
-		
 	}
 	
 	public function update_record_assets($data, $id){
-
 		$this->db->where('assets_id', $id);
 		if( $this->db->update('umb_assets',$data)) {
 			return true;
@@ -125,4 +115,3 @@ class Assets_model extends CI_Model {
 		}		
 	}
 }
-?>

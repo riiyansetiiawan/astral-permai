@@ -51,7 +51,6 @@ class Awards_model extends CI_Model {
 		$sql = 'SELECT * FROM umb_awards WHERE award_id = ?';
 		$binds = array($id);
 		$query = $this->db->query($sql, $binds);
-		
 		if ($query->num_rows() == 1) {
 			return $query->result();
 		} else {
